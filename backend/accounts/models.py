@@ -17,12 +17,14 @@ class StudentTeam(models.Model):
 
 class CustomUser(AbstractUser):
     """Custom User with extended functionality."""
-    STUDENT = 'student'
     COMPANY = 'company'
+    LEADER = 'leader'
+    STUDENT = 'student'
 
     ACCOUNT_TYPE = [
-        (STUDENT, _('Student')),
         (COMPANY, _('Company')),
+        (LEADER, _('Leader')),
+        (STUDENT, _('Student')),
     ]
 
     account_type = models.CharField(
@@ -36,6 +38,7 @@ class CustomUser(AbstractUser):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
+        verbose_name=_('Team assigned to student')
     )
 
     @property
