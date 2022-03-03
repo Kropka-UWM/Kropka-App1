@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+# Standard Library
 import os
 from pathlib import Path
 
@@ -174,6 +175,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 try:
+    # 3rd-party
     from project.settings_local import *  # noqa: F403, F401
 except ImportError:
     pass
