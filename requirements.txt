@@ -1,0 +1,7 @@
+django==3.2.12
+djangorestframework==3.13.1
+djangorestframework-simplejwt==
+psycopg2-binary==2.9.3
+django-rosetta==0.9.8
+weasyprint==54.2
+requests==2.27.1
