@@ -3,3 +3,4 @@ db.sqlite3
 settings_local.py
 debug.log
 info.log
+*node_modules/*
