@@ -1,7 +1,36 @@
+<script setup lang="ts">
+import { onMounted } from "vue";
+import axios from "axios";
+import { key } from "@/store";
+import { useStore } from "vuex";
+
+const store = useStore(key);
+
+// Auto login
+onMounted(() => {
+  const userString = localStorage.getItem("user");
+  if (userString) {
+    const userData = JSON.parse(userString);
+    store.commit("SET_USER_DATA", userData);
+  }
+  axios.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response.status === 401) {
+        store.dispatch("logout");
+      }
+      return Promise.reject(error);
+    }
+  );
+});
+</script>
+
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link>|
+    <router-link to="/user/login">Login</router-link>|
+    <router-link to="/panel">Panel</router-link>
   </div>
   <router-view />
 </template>
