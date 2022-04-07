@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'backend.accounts.apps.AccountsConfig',
     'corsheaders',
     'rest_framework',
+    'dj_rest_auth',
 ]
 
 MIDDLEWARE = [
