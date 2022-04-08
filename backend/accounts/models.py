@@ -17,6 +17,14 @@ class StudentTeam(models.Model):
     )
 
 
+class Company(models.Model):
+    """Company model."""
+    name = models.CharField(
+        _('Name of company'),
+        max_length=255,
+    )
+
+
 class CustomUser(AbstractUser):
     """Custom User with extended functionality."""
     COMPANY = 'company'
@@ -36,10 +44,17 @@ class CustomUser(AbstractUser):
     )
     team = models.ForeignKey(
         StudentTeam,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         blank=True,
         null=True,
-        verbose_name=_('Team assigned to student')
+        verbose_name=_('Team assigned to student'),
+    )
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.DO_NOTHING,
+        blank=True,
+        null=True,
+        verbose_name=_('Company'),
     )
     nr_index = models.CharField(_('Index student number'), max_length=16, null=True, blank=True)
     students_amount = models.IntegerField(
