@@ -187,9 +187,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
-    'DEFAULT_THROTTLE_RATES': {
-        'regon': '3/second',
-    },
 }
 
 SIMPLE_JWT = {
