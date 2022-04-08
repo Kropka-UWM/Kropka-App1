@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 04:52+0200\n"
+"POT-Creation-Date: 2022-04-08 08:59+0200\n"
 "PO-Revision-Date: 2022-04-08 04:53+0124\n"
 "Last-Translator:   <patryk@test.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,50 +16,58 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: backend/accounts/models.py:14
+#: backend/accounts/models.py:15
 msgid "Name of team"
 msgstr "Nazwa zespołu"
 
-#: backend/accounts/models.py:26
+#: backend/accounts/models.py:23
+#, fuzzy
+#| msgid "Name of team"
+msgid "Name of company"
+msgstr "Nazwa zespołu"
+
+#: backend/accounts/models.py:35 backend/accounts/models.py:57
 msgid "Company"
 msgstr "Firma"
 
-#: backend/accounts/models.py:27
+#: backend/accounts/models.py:36
 msgid "Leader"
 msgstr "Przewodniczący"
 
-#: backend/accounts/models.py:28
+#: backend/accounts/models.py:37
 msgid "Student"
 msgstr "Student"
 
-#: backend/accounts/models.py:32
+#: backend/accounts/models.py:41
 msgid "Account type"
 msgstr "Typ konta"
 
-#: backend/accounts/models.py:41
+#: backend/accounts/models.py:50
 msgid "Team assigned to student"
 msgstr "Zespół przypisany do studenta"
 
-#: backend/accounts/models.py:43
+#: backend/accounts/models.py:59
 msgid "Index student number"
 msgstr "Numer indeksu studenta"
 
-#: backend/accounts/models.py:45
+#: backend/accounts/models.py:61
 msgid "Students amount for project"
 msgstr "Liczba studentów dla projektu"
 
-#: backend/project/settings.py:155
+#: backend/project/settings.py:156
 msgid "Polish"
 msgstr "Polski"
 
-#: backend/project/settings.py:156
+#: backend/project/settings.py:157
 msgid "English"
 msgstr "Angielski"
 
-#: backend/project/settings.py:164
+#: backend/project/settings.py:165
 msgid "Polski"
 msgstr "Polski"
 
@@ -67,14 +75,13 @@ msgstr "Polski"
 msgid "Error 404"
 msgstr "Błąd 404"
 
-#: backend/templates/errors/404.html:7
-msgid "Error 404 - contact the administration."
-msgstr "Błąd 404 - skontaktuj się z administracją."
+#: backend/templates/errors/404.html:19 backend/templates/errors/500.html:19
+msgid "Error 500 - contact the administration."
+msgstr "Błąd 500 - skontaktuj się z administracją."
 
 #: backend/templates/errors/500.html:4
 msgid "Error 500"
 msgstr "Błąd 500"
 
-#: backend/templates/errors/500.html:7
-msgid "Error 500 - contact the administration."
-msgstr "Błąd 500 - skontaktuj się z administracją."
+#~ msgid "Error 404 - contact the administration."
+#~ msgstr "Błąd 404 - skontaktuj się z administracją."
