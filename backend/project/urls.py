@@ -25,6 +25,7 @@ from backend.accounts.views import IndexView, Demo500, Demo404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('backend.accounts.urls', namespace='accounts')),
     path('', include('dj_rest_auth.urls')),
     path('', IndexView.as_view(), name='index'),
 ]
