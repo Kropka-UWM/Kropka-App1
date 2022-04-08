@@ -14,6 +14,8 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +29,7 @@ SECRET_KEY = 'django-insecure-nyqa6gebz7n%hy$h*%^9^5zy9efk$&j9-)96%c185#(d82=h@4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend.accounts.apps.AccountsConfig',
     'corsheaders',
+    'rosetta',
     'rest_framework',
+    'rest_framework.authtoken',
     'dj_rest_auth',
 ]
 
@@ -145,11 +149,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
 gettext = lambda s: s  # noqa: E731
 LANGUAGES = [
     ('pl', gettext('Polish')),
     ('en', gettext('English')),
 ]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+ROSETTA_LANGUAGES = [
+    ('pl', _('Polski')),
+]
+
 
 TIME_ZONE = 'Europe/Warsaw'
 

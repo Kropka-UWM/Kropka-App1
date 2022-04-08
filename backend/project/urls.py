@@ -21,7 +21,7 @@ from django.urls import include
 from django.urls import path
 
 # Project
-from backend.accounts.views import IndexView
+from backend.accounts.views import IndexView, Demo500, Demo404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +38,8 @@ if 'rosetta' in settings.INSTALLED_APPS:
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += path('demo404/', Demo404.as_view()),
+    urlpatterns += path('demo500/', Demo500.as_view()),
 
 handler404 = 'backend.accounts.views.handler404'
 handler500 = 'backend.accounts.views.handler500'
