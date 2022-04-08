@@ -18,3 +18,6 @@ class CustomUserAdmin(admin.ModelAdmin):
     search_fields = [
         'nr_index',
     ]
+    list_filter = [
+        'account_type',
+    ]
