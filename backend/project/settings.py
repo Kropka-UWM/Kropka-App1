@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend.accounts.apps.AccountsConfig',
+    'backend.handlers.apps.HandlersConfig',
     'corsheaders',
     'rosetta',
     'rest_framework',

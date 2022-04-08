@@ -21,10 +21,11 @@ from django.urls import include
 from django.urls import path
 
 # Project
-from backend.accounts.views import IndexView, Demo500, Demo404
+from backend.accounts.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('backend.handlers.urls', namespace='handlers')),
     path('', include('backend.accounts.urls', namespace='accounts')),
     path('', include('dj_rest_auth.urls')),
     path('', IndexView.as_view(), name='index'),
@@ -39,8 +40,6 @@ if 'rosetta' in settings.INSTALLED_APPS:
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += path('demo404/', Demo404.as_view()),
-    urlpatterns += path('demo500/', Demo500.as_view()),
 
-handler404 = 'backend.accounts.views.handler404'
-handler500 = 'backend.accounts.views.handler500'
+handler404 = 'backend.handlers.views.handler404'
+handler500 = 'backend.handlers.views.handler500'
