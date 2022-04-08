@@ -187,7 +187,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
-    'EXCEPTION_HANDLER': 'multiwash.views.old_api.exception_handler',
     'DEFAULT_THROTTLE_RATES': {
         'regon': '3/second',
     },
