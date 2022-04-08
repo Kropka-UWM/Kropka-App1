@@ -3,7 +3,31 @@
 from django.contrib import admin
 
 # Register your models here.
-from backend.accounts.models import CustomUser
+from backend.accounts.models import CustomUser, StudentTeam, Company
+
+
+@admin.register(StudentTeam)
+class StudentTeamAdmin(admin.ModelAdmin):
+    """Student Team admin."""
+
+    list_display = [
+        'name',
+    ]
+    search_fields = [
+        'name',
+    ]
+
+
+@admin.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    """Company admin."""
+
+    list_display = [
+        'name',
+    ]
+    search_fields = [
+        'name',
+    ]
 
 
 @admin.register(CustomUser)
