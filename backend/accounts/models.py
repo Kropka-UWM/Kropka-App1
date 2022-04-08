@@ -52,12 +52,12 @@ class CustomUser(AbstractUser):
         blank=True,
     )
 
-    def __str__(self):
+    def __str__(self):  # noqa: D102
         get_name = super().__str__()
         if self.account_type:
             return f'[{self.account_type}] {get_name}'
         return get_name
 
     @property
-    def has_team(self):
+    def has_team(self):  # noqa: D102
         return bool(self.team)

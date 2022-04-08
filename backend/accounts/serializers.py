@@ -7,11 +7,12 @@ UserModel = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """User serializer."""
 
     account_type = serializers.ChoiceField(choices=CustomUser.ACCOUNT_TYPE)
     password = serializers.CharField(write_only=True)
 
-    def create(self, validated_data):
+    def create(self, validated_data):  # noqa: D102
         user = UserModel.objects.create_user(
             email=validated_data['email'],
             first_name=validated_data['first_name'],
