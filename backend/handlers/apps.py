@@ -1,8 +1,7 @@
 """Apps file."""
-# Django
 from django.apps import AppConfig
 
 
-class AccountsConfig(AppConfig):
+class HandlersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'backend.accounts'
+    name = 'backend.handlers'
