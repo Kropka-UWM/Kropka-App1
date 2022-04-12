@@ -25,18 +25,21 @@ from backend.accounts.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='index')
+    path('', include('backend.handlers.urls', namespace='handlers')),
+    path('', include('backend.accounts.urls', namespace='accounts')),
+    path('', include('dj_rest_auth.urls')),
+    path('', IndexView.as_view(), name='index'),
 ]
 
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
-        path('rosetta/', include('rosetta.urls'))
+        path('rosetta/', include('rosetta.urls')),
     ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'backend.accounts.views.handler404'
-handler500 = 'backend.accounts.views.handler500'
+handler404 = 'backend.handlers.views.handler404'
+handler500 = 'backend.handlers.views.handler500'
