@@ -4,6 +4,8 @@ from django.urls import path
 from .views import Demo404
 from .views import Demo500
 
+app_name = 'handlers'
+
 urlpatterns = []
 
 if settings.DEBUG:
