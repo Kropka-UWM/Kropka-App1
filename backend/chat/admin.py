@@ -10,11 +10,24 @@ from .models import Message
 class ConversationAdmin(admin.ModelAdmin):
     """Conversation admin class."""
 
-    pass
+    search_fields = [
+        'name',
+    ]
 
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     """Message admin class."""
 
-    pass
+    list_display = [
+        '__str__',
+        'conversation',
+    ]
+
+    search_fields = [
+        'user__first_name',
+        'user__last_name',
+        'user__username',
+        'user__email',
+        'conversation__name',
+    ]

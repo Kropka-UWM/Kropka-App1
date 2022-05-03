@@ -1,27 +1,19 @@
 """Chat view file."""
-from django.http import Http404
 from rest_framework import permissions
+from rest_framework.generics import CreateAPIView
 from rest_framework.generics import ListAPIView
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from .models import Conversation
 from .models import Message
 from .serializers import ConversationSerializer
 from .serializers import MessageSerializer
 
 
-class CreateMessageView(APIView):
-    """Student base info class."""
+class CreateConversationView(CreateAPIView):
+    """Create Message view."""
 
     permission_classes = [permissions.IsAuthenticated]
-
-    def get(self, request, format=None):  # noqa: D102
-        if not request.user.is_authenticated:
-            raise Http404
-        initial_dict = {
-            'test': 123,
-        }
-        return Response(initial_dict)
+    serializer_class = ConversationSerializer
+    queryset = Conversation.objects.all()
 
 
 class GetConversationsView(ListAPIView):
@@ -37,6 +29,17 @@ class GetConversationsView(ListAPIView):
         return qs.filter(message__id__in=messages.values_list('id', flat=True))
 
 
+class CreateMessageView(CreateAPIView):
+    """Create Message view."""
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = MessageSerializer
+    queryset = Message.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
 class GetMessagesView(ListAPIView):
     """Get messages view class."""
 
@@ -47,4 +50,3 @@ class GetMessagesView(ListAPIView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(user=self.request.user)
-
