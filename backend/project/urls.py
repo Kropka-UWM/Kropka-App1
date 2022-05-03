@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backend.handlers.urls', namespace='handlers')),
     path('', include('backend.accounts.urls', namespace='accounts')),
+    path('', include('backend.chat.urls', namespace='messages')),
     path('', include('dj_rest_auth.urls')),
     path('', IndexView.as_view(), name='index'),
 ]
