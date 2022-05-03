@@ -23,6 +23,5 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'conversation',
-            'user',
             'content',
         ]

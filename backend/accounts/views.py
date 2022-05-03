@@ -39,7 +39,7 @@ class CreateUserView(CreateAPIView):
 class GetStudentInfo(APIView):
     """Student base info class."""
 
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):  # noqa: D102
         if not request.user.is_authenticated:
