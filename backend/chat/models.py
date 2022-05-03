@@ -33,4 +33,4 @@ class Message(models.Model):
     )
 
     def __str__(self):  # noqa: D102
-        return _('Message from user {0}').format(self.user)
+        return _('Message {0} from user {1}').format(self.id, self.user)
