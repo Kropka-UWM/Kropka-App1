@@ -49,4 +49,7 @@ class GetMessagesView(ListAPIView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.filter(user=self.request.user)
+        filter_kwargs = {}
+        if 'conv_id' in self.kwargs:
+            filter_kwargs['conversation_id'] = self.kwargs['conv_id']
+        return qs.filter(user=self.request.user, **filter_kwargs)
