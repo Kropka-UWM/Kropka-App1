@@ -13,19 +13,11 @@ from django.views.generic import TemplateView
 # 3rd-party
 from rest_framework import permissions
 from rest_framework.generics import CreateAPIView
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import RetrieveAPIView
 from weasyprint import HTML
 
 # Project
 from backend.accounts.serializers import UserSerializer
-
-
-class IndexView(TemplateView):
-    """Template view."""
-
-    def get(self, request, *args, **kwargs):
-        raise Http404
 
 
 class CreateUserView(CreateAPIView):
@@ -36,18 +28,15 @@ class CreateUserView(CreateAPIView):
     serializer_class = UserSerializer
 
 
-class GetStudentInfo(APIView):
+class GetAccountInfo(RetrieveAPIView):
     """Student base info class."""
 
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+    queryset = get_user_model().objects.all()
 
-    def get(self, request, format=None):  # noqa: D102
-        if not request.user.is_authenticated:
-            raise Http404
-        initial_dict = {
-            'test': 123,
-        }
-        return Response(initial_dict)
+    def get_object(self):  # noqa: D102
+        return self.request.user
 
 
 def pdf_gen_code(request):
