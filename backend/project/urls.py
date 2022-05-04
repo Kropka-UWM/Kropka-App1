@@ -20,8 +20,6 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-# Project
-from backend.accounts.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +27,6 @@ urlpatterns = [
     path('', include('backend.accounts.urls', namespace='accounts')),
     path('', include('backend.chat.urls', namespace='messages')),
     path('', include('dj_rest_auth.urls')),
-    path('', IndexView.as_view(), name='index'),
 ]
 
 
