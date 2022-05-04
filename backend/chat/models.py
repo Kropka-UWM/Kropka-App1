@@ -15,6 +15,10 @@ class Conversation(models.Model):
     def __str__(self):  # noqa: D102
         return self.name
 
+    class Meta:
+        verbose_name = _('Conversation')
+        verbose_name_plural = _('Conversations')
+
 
 class Message(models.Model):
     """Message model class."""
@@ -34,3 +38,7 @@ class Message(models.Model):
 
     def __str__(self):  # noqa: D102
         return _('Message {0} from user {1}').format(self.id, self.user)
+
+    class Meta:
+        verbose_name = _('Message')
+        verbose_name_plural = _('Messages')
