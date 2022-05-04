@@ -2,8 +2,10 @@
 # Django
 from django.contrib import admin
 
-# Register your models here.
-from backend.accounts.models import CustomUser, StudentTeam, Company
+# Local
+from .models import Company
+from .models import CustomUser
+from .models import StudentTeam
 
 
 @admin.register(StudentTeam)

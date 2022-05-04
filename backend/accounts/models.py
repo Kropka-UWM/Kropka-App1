@@ -1,12 +1,11 @@
 """Init project."""
 # Django
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
-# Create your models here.
 
 
 class StudentTeam(models.Model):
@@ -15,6 +14,17 @@ class StudentTeam(models.Model):
         _('Name of team'),
         max_length=255,
     )
+    logo = models.ImageField(
+        _('Logo of student team'),
+        null=True, blank=True,
+    )
+
+    def __str__(self):  # noqa: D102
+        return self.name
+
+    class Meta:
+        verbose_name = _('Students team')
+        verbose_name_plural = _('Students teams')
 
 
 class Company(models.Model):
@@ -23,17 +33,30 @@ class Company(models.Model):
         _('Name of company'),
         max_length=255,
     )
+    logo = models.ImageField(
+        _('Logo of company'),
+        null=True, blank=True,
+    )
+
+    def __str__(self):  # noqa: D102
+        return self.name
+
+    class Meta:
+        verbose_name = _('Company')
+        verbose_name_plural = _('Companies')
 
 
 class CustomUser(AbstractUser):
     """Custom User with extended functionality."""
     COMPANY = 'company'
     LEADER = 'leader'
+    STUDENT_LEADER = 'student_leader'
     STUDENT = 'student'
 
     ACCOUNT_TYPE = [
         (COMPANY, _('Company')),
         (LEADER, _('Leader')),
+        (STUDENT_LEADER, _('Student leader')),
         (STUDENT, _('Student')),
     ]
 
@@ -70,8 +93,16 @@ class CustomUser(AbstractUser):
     def __str__(self):  # noqa: D102
         get_name = super().__str__()
         if self.account_type:
-            return f'[{self.account_type}] {get_name}'
+            return f'[{self.get_account_type_display()}] {get_name}'
         return get_name
+
+    def clean(self):  # noqa: D102:
+        if self.team and self.account_type == CustomUser.STUDENT_LEADER:
+            queryset = self.team.customuser_set.filter(
+                account_type=CustomUser.STUDENT_LEADER).exclude(id=self.id)
+            if queryset.exists():
+                raise ValidationError(_('No more than one leader can exist in the team!'))
+        super().clean()
 
     @property
     def has_team(self):  # noqa: D102
