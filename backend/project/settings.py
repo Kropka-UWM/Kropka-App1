@@ -211,6 +211,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 try:
     # 3rd-party
-    from project.settings_local import *  # noqa: F403, F401
+    from backend.project.settings_local import *  # noqa: F403, F401
 except ImportError:
     pass
