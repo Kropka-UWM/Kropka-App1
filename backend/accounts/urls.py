@@ -2,11 +2,13 @@
 # Django
 from django.urls import path
 
-# Project
-from backend.accounts.views import CreateUserView
+# Local
+from .views import CreateUserView
+from .views import GetAccountInfo
 
 app_name = 'accounts'
 
 urlpatterns = [
     path('register/', CreateUserView.as_view(), name='rest_register'),
+    path('get-account-info/', GetAccountInfo.as_view(), name='get_account_info'),
 ]
