@@ -3,8 +3,9 @@
 # Django
 from django.core.management.base import BaseCommand
 
-from .gen_factories import GenerateUsersFactory
+# Local
 from ...models import CustomUser
+from .gen_factories import GenerateUsersFactory
 
 
 class Command(BaseCommand):
