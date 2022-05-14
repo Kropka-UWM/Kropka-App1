@@ -8,7 +8,6 @@ from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 # Project
-from backend.chat.models import Conversation
 from backend.chat.models import Message
 from backend.chat.utils import get_conversation
 
