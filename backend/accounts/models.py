@@ -18,6 +18,7 @@ class StudentTeam(models.Model):
         _('Logo of student team'),
         null=True, blank=True,
     )
+    created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
     def __str__(self):  # noqa: D102
         return self.name
@@ -37,6 +38,7 @@ class Company(models.Model):
         _('Logo of company'),
         null=True, blank=True,
     )
+    created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
     def __str__(self):  # noqa: D102
         return self.name
