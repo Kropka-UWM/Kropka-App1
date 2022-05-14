@@ -1,5 +1,8 @@
 """Chat serializers file."""
+# 3rd-party
 from rest_framework import serializers
+
+# Local
 from .models import Conversation
 from .models import Message
 
