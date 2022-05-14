@@ -28,3 +28,4 @@ jobs:
     - name: Run Flake8
       run: |
         flake8 .
+        python manage.py test
