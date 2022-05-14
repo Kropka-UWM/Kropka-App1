@@ -41,14 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'backend.handlers.apps.HandlersConfig',
     'backend.accounts.apps.AccountsConfig',
+    'backend.notify.apps.NotifyConfig',
     'backend.chat.apps.ChatConfig',
     'corsheaders',
     'rosetta',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'push_notifications',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +118,15 @@ LOGGING = {
 }
 
 WSGI_APPLICATION = 'backend.project.wsgi.application'
-
+ASGI_APPLICATION = 'backend.project.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -216,6 +227,13 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'uwm.kropka.masters@gmail.com'
 EMAIL_HOST_PASSWORD = 'costam123'
+
+FCM_API_KEY = "AAAAD9bfjIY:APA91bGH8OpKBJNrym_NuxjOdW_RWJPpIfWls8ldTUvqkfG6AHfGE3GCnaONL8TrWTTd3qqCAkE2wWRsSgICH8pTdUUlW9x3NjPZ8ZyQtcRsdqm_MFxvag6QKixF0iXjG4EAdoskJmxr"
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+    'FCM_API_KEY': FCM_API_KEY,
+    'GCM_API_KEY': '',
+}
 
 try:
     # 3rd-party
