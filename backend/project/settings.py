@@ -208,6 +208,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
+DEFAULT_FROM_EMAIL = 'p.szczepanski996@gmail.com'
 
 try:
     # 3rd-party
