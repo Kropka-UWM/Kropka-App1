@@ -29,3 +29,23 @@ Domyślnie jest tworzona baza danych "plikowa" (sqlite3) ale możemy skopiować 
 a następnie zmodyfikować jego zawartość tak aby ten plik zawierał konfigurację np. do połączenia z MySQL albo PostgreSQL.
 
 Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na stronie django.
+
+# Endpointy [backend]:
+* **Autentykacja**:
+  * /register/
+  * /login/
+  * /logout
+  * /password-reset/
+  * /get_account_info/
+  * /password/change/
+* Reszta:
+  * /get_conversations/
+  * /get_messages/
+  * /get_messages/<conversation_id>/
+
+# Widoki [Demo]:
+* /demo404/
+* /demo500/
+* /chat-demo/
+* /chat-demo/<chat_name>/
+* /push-demo/
