@@ -7,14 +7,13 @@ from django.template.loader import render_to_string
 from backend.project import settings
 
 
-def send_email_to_user(user):
+def send_email_to_user(user, title, context, template_name=None):
     """Send email contains order-data to client."""
-    template = 'pdf_template.html'
+    if not template_name:
+        template = 'pdf_template.html'
     msg = EmailMultiAlternatives(
-        'Jakis fajny tytul',
-        render_to_string(template, {
-            'context': 'test',
-        }),
+        title,
+        render_to_string(template, context),
         settings.DEFAULT_FROM_EMAIL,
         [user.email],
     )
