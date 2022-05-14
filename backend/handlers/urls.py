@@ -12,5 +12,7 @@ app_name = 'handlers'
 urlpatterns = []
 
 if settings.DEBUG:
-    urlpatterns += path('demo404/', Demo404.as_view()),
-    urlpatterns += path('demo500/', Demo500.as_view()),
+    urlpatterns += [
+        path('demo404/', Demo404.as_view()),
+        path('demo500/', Demo500.as_view()),
+    ]

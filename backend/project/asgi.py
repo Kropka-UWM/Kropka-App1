@@ -23,10 +23,10 @@ from backend.chat import routing
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.project.settings')
 
 application = ProtocolTypeRouter({
-    "http": AsgiHandler(),
-    "websocket": AllowedHostsOriginValidator(
+    'http': AsgiHandler(),
+    'websocket': AllowedHostsOriginValidator(
         AuthMiddlewareStack(
-            URLRouter(routing.websocket_urlpatterns)
+            URLRouter(routing.websocket_urlpatterns),
         ),
     ),
 })

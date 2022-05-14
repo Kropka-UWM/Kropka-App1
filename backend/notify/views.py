@@ -32,7 +32,7 @@ class FirebasePushView(TemplateView):
 
 
 @csrf_exempt
-def register_push(request):  # noqa: D102
+def register_push(request):  # noqa: D103
     if request.method != 'POST':
         raise Http404
     try:

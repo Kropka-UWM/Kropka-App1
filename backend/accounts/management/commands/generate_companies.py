@@ -21,7 +21,7 @@ class Command(BaseCommand):
         companies_amount = options['amount']
         GenerateUsersFactory.create_batch(
             size=companies_amount,
-            account_type=CustomUser.COMPANY
+            account_type=CustomUser.COMPANY,
         )
         self.stdout.write(self.style.SUCCESS(
                 f'Generated {companies_amount} companies!',

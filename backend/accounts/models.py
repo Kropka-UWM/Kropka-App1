@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class StudentTeam(models.Model):
     """Student Team model."""
+
     name = models.CharField(
         _('Name of team'),
         max_length=255,
@@ -20,16 +21,17 @@ class StudentTeam(models.Model):
     )
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
-    def __str__(self):  # noqa: D102
+    def __str__(self):  # noqa: D105
         return self.name
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = _('Students team')
         verbose_name_plural = _('Students teams')
 
 
 class Company(models.Model):
     """Company model."""
+
     name = models.CharField(
         _('Name of company'),
         max_length=255,
@@ -40,16 +42,17 @@ class Company(models.Model):
     )
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
-    def __str__(self):  # noqa: D102
+    def __str__(self):  # noqa: D105
         return self.name
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = _('Company')
         verbose_name_plural = _('Companies')
 
 
 class CustomUser(AbstractUser):
     """Custom User with extended functionality."""
+
     COMPANY = 'company'
     LEADER = 'leader'
     STUDENT_LEADER = 'student_leader'
@@ -93,7 +96,7 @@ class CustomUser(AbstractUser):
     )
     account_notes = models.TextField(_('Registration notes'), null=True, blank=True)
 
-    def __str__(self):  # noqa: D102
+    def __str__(self):  # noqa: D105
         get_name = super().__str__()
         if self.account_type:
             return f'[{self.get_account_type_display()}] {get_name}'
