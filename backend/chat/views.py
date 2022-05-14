@@ -1,5 +1,6 @@
 """Chat view file."""
 # Django
+from django.http import Http404
 from django.views.generic import TemplateView
 
 # 3rd-party
@@ -36,12 +37,26 @@ class GetMessagesView(ListAPIView):
     serializer_class = MessageSerializer
     queryset = Message.objects.all()
 
+    def __init__(self, *args, **kwargs):  # noqa: D107
+        super().__init__(*args, **kwargs)
+        self.messages = None
+
+    def dispatch(self, request, *args, **kwargs):  # noqa: D102
+        try:
+            if 'conv_id' in self.kwargs:
+                conv = Conversation.objects.get(id=self.kwargs['conv_id'])
+                self.messages = Message.objects.filter(conversation=conv)
+                user_ids = set(self.messages.values_list('user_id', flat=True))
+                if request.user.id not in user_ids:
+                    raise Http404
+        except Conversation.DoesNotExist:
+            raise Http404
+        return super().dispatch(request, *args, **kwargs)
+
     def get_queryset(self):  # noqa: D102
-        qs = super().get_queryset()
-        filter_kwargs = {}
         if 'conv_id' in self.kwargs:
-            filter_kwargs['conversation_id'] = self.kwargs['conv_id']
-        return qs.filter(user=self.request.user, **filter_kwargs).order_by('created_dt')[:25]
+            return self.messages.order_by('created_dt')[:25]
+        return super().get_queryset()
 
 
 class ChatDemoView(TemplateView):
