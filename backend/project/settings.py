@@ -14,6 +14,9 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+# Django
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +30,7 @@ SECRET_KEY = 'django-insecure-nyqa6gebz7n%hy$h*%^9^5zy9efk$&j9-)96%c185#(d82=h@4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,9 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    'backend.handlers.apps.HandlersConfig',
     'backend.accounts.apps.AccountsConfig',
+    'backend.notify.apps.NotifyConfig',
+    'backend.chat.apps.ChatConfig',
     'corsheaders',
+    'rosetta',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'push_notifications',
 ]
 
 MIDDLEWARE = [
@@ -108,7 +119,15 @@ LOGGING = {
 }
 
 WSGI_APPLICATION = 'backend.project.wsgi.application'
-
+ASGI_APPLICATION = 'backend.project.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -117,7 +136,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
 
 
@@ -144,11 +163,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
 gettext = lambda s: s  # noqa: E731
 LANGUAGES = [
     ('pl', gettext('Polish')),
     ('en', gettext('English')),
 ]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+ROSETTA_LANGUAGES = [
+    ('pl', _('Polski')),
+]
+
 
 TIME_ZONE = 'Europe/Warsaw'
 
@@ -172,10 +201,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
-    'EXCEPTION_HANDLER': 'multiwash.views.old_api.exception_handler',
-    'DEFAULT_THROTTLE_RATES': {
-        'regon': '3/second',
-    },
 }
 
 SIMPLE_JWT = {
@@ -196,8 +221,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+DEFAULT_FROM_EMAIL = 'uwm.kropka.masters@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'uwm.kropka.masters@gmail.com'
+EMAIL_HOST_PASSWORD = 'costam123'
+
+FCM_API_KEY = 'AAAAD9bfjIY:APA91bGH8OpKBJNrym_NuxjOdW_RWJPpIfWls8ldTUvqkfG6AHfGE3GCnaONL8Tr' \
+              'WTTd3qqCAkE2wWRsSgICH8pTdUUlW9x3NjPZ8ZyQtcRsdqm_MFxvag6QKixF0iXjG4EAdoskJmxr'
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+    'FCM_API_KEY': FCM_API_KEY,
+    'GCM_API_KEY': '',
+}
+
 try:
-    # 3rd-party
-    from project.settings_local import *  # noqa: F403, F401
+    # Project
+    from backend.project.settings_local import *  # noqa: F403, F401
 except ImportError:
     pass
