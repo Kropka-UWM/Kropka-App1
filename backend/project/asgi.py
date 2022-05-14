@@ -20,11 +20,11 @@ from channels.routing import ProtocolTypeRouter
 from channels.routing import URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 
-# Project
-from backend.chat import routing
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.project.settings')
 django_asgi_app = get_asgi_application()
+
+# Project
+from backend.chat import routing
 
 application = ProtocolTypeRouter({
     'http': AsgiHandler(),
