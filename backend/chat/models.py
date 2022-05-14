@@ -16,10 +16,10 @@ class Conversation(models.Model):
     )
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
-    def __str__(self):  # noqa: D102
+    def __str__(self):  # noqa: D105
         return self.name
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = _('Conversation')
         verbose_name_plural = _('Conversations')
 
@@ -42,9 +42,9 @@ class Message(models.Model):
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
     updated_dt = models.DateTimeField(_('Update time'), auto_now=True)
 
-    def __str__(self):  # noqa: D102
+    def __str__(self):  # noqa: D105
         return _('Message {0} from user {1}').format(self.id, self.user)
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = _('Message')
         verbose_name_plural = _('Messages')
