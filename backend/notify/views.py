@@ -1,9 +1,13 @@
 """Views file."""
 
 # Create your views here.
-from django.http import Http404, JsonResponse
+# Django
+from django.http import Http404
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
+
+# 3rd-party
 from push_notifications.models import GCMDevice
 
 
