@@ -208,7 +208,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
-DEFAULT_FROM_EMAIL = 'p.szczepanski996@gmail.com'
+
+DEFAULT_FROM_EMAIL = 'uwm.kropka.masters@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'uwm.kropka.masters@gmail.com'
+EMAIL_HOST_PASSWORD = 'costam123'
 
 try:
     # 3rd-party
