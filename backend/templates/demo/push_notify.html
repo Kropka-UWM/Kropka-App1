@@ -1,0 +1,15 @@
+{% load static %}
+<script src="{% static 'custom/push-utils.js' %}"></script>
+<script>
+    function displayNotification() {
+      if (Notification.permission == 'granted') {
+        navigator.serviceWorker.getRegistration().then(function(reg) {
+          reg.showNotification('Hello world!');
+        });
+      }
+    }
+
+    Notification.requestPermission(function(status) {
+        console.log('Notification permission status:', status);
+    });
+</script>

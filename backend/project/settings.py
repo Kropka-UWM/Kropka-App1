@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend.handlers.apps.HandlersConfig',
     'backend.accounts.apps.AccountsConfig',
+    'backend.notify.apps.NotifyConfig',
     'backend.chat.apps.ChatConfig',
     'corsheaders',
     'rosetta',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'push_notifications',
 ]
 
 MIDDLEWARE = [
@@ -208,6 +210,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+FCM_API_KEY = "AAAAD9bfjIY:APA91bGH8OpKBJNrym_NuxjOdW_RWJPpIfWls8ldTUvqkfG6AHfGE3GCnaONL8TrWTTd3qqCAkE2wWRsSgICH8pTdUUlW9x3NjPZ8ZyQtcRsdqm_MFxvag6QKixF0iXjG4EAdoskJmxr"
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+    'FCM_API_KEY': FCM_API_KEY,
+    'GCM_API_KEY': '',
+}
 
 try:
     # 3rd-party

@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('backend.handlers.urls', namespace='handlers')),
     path('', include('backend.accounts.urls', namespace='accounts')),
     path('', include('backend.chat.urls', namespace='messages')),
+    path('', include('backend.notify.urls', namespace='notify')),
     path('', include('dj_rest_auth.urls')),
 ]
 
