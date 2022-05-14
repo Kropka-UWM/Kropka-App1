@@ -6,7 +6,7 @@ from backend.project import settings
 
 def send_email_to_user(user):
     """Send email contains order-data to client."""
-    template = 'example.html'
+    template = 'pdf_template.html'
     msg = EmailMultiAlternatives(
         'Jakis fajny tytul',
         render_to_string(template, {
