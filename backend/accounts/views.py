@@ -1,4 +1,5 @@
 """Views file."""
+
 # Standard Library
 import io
 

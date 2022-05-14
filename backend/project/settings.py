@@ -124,7 +124,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            'hosts': [('127.0.0.1', 6379)],
         },
     },
 }
@@ -136,7 +136,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
 
 
@@ -229,7 +229,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'uwm.kropka.masters@gmail.com'
 EMAIL_HOST_PASSWORD = 'costam123'
 
-FCM_API_KEY = "AAAAD9bfjIY:APA91bGH8OpKBJNrym_NuxjOdW_RWJPpIfWls8ldTUvqkfG6AHfGE3GCnaONL8TrWTTd3qqCAkE2wWRsSgICH8pTdUUlW9x3NjPZ8ZyQtcRsdqm_MFxvag6QKixF0iXjG4EAdoskJmxr"
+FCM_API_KEY = 'AAAAD9bfjIY:APA91bGH8OpKBJNrym_NuxjOdW_RWJPpIfWls8ldTUvqkfG6AHfGE3GCnaONL8Tr' \
+              'WTTd3qqCAkE2wWRsSgICH8pTdUUlW9x3NjPZ8ZyQtcRsdqm_MFxvag6QKixF0iXjG4EAdoskJmxr'
 
 PUSH_NOTIFICATIONS_SETTINGS = {
     'FCM_API_KEY': FCM_API_KEY,
