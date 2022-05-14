@@ -1,40 +1,33 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
-import UserLayout from "../views/user/Layout.vue";
-import UserRegister from "../views/user/Register.vue";
-import UserLogin from "../views/user/Login.vue";
+import UserLayout from "../views/account/Layout.vue";
+import UserRegister from "../views/account/Register.vue";
+import UserLogin from "../views/account/Login.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/user",
     name: "UserLayout",
     component: UserLayout,
     children: [
       {
+        alias: "",
         path: "login",
         name: "UserLogin",
         component: UserLogin,
+        meta: {
+          arleadyLoggedIn: true,
+        },
       },
       {
+        alias: "register",
         path: "register",
         name: "UserRegister",
         component: UserRegister,
+        meta: {
+          arleadyLoggedIn: true,
+        },
       },
     ],
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/panel",
@@ -46,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (panel.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "panel" */ "../views/Panel.vue"),
+      import(/* webpackChunkName: "panel" */ "../views/userpanel/Panel.vue"),
   },
 ];
 
@@ -60,6 +53,10 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some((record) => record.meta.requiresAuth) && !loggedIn) {
     next("/");
+  }
+
+  if (to.matched.some((record) => record.meta.arleadyLoggedIn) && loggedIn) {
+    next("/panel");
   }
   next();
 });
