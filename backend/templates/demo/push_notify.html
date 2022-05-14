@@ -1,0 +1,18 @@
+{% load static %}
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+<script src="{% static 'custom/push-utils.js' %}"></script>
+<script>
+    function displayNotification() {
+      if (Notification.permission === 'granted') {
+        navigator.serviceWorker.getRegistration().then(function(reg) {
+          reg.showNotification('Hello world!');
+        });
+      }
+    }
+
+    Notification.requestPermission(function(status) {
+        console.log('Notification permission status:', status);
+    });
+</script>
