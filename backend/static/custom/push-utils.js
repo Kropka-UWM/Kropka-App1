@@ -1,4 +1,31 @@
 // Utils functions:
+const vapidKey = 'BPRjA8TOVJEAJUR49tSAe7GJvngK5TAnY2eLShQOmcJmr1yv2z6qbV0AcMmfojP-MGveNYV-bx_e9irdKNxIgKI';
+
+const firebaseApp = firebase.initializeApp({
+  apiKey: "AIzaSyBJvSZlEjXMhz4LWoRi1F17kN6n7LKvHyM",
+  authDomain: "rock-sublime-252011.firebaseapp.com",
+  databaseURL: 'https://project-id.firebaseio.com',
+  projectId: "rock-sublime-252011",
+  storageBucket: "rock-sublime-252011.appspot.com",
+  messagingSenderId: "68029484166",
+  appId: "1:68029484166:web:2002ba7ad6d9bba88a9507"
+});
+
+function requestPOSTToServer (data) {
+    $.ajax({
+        url: '/register-push/',
+        method: 'POST',
+        data: {
+            'browser': data.browser,
+            'p256dh': data.p256dh,
+            'auth': data.auth,
+            'registration_id': data.registration_id
+        },
+        dataType: 'json',
+        success: function (data) {
+        }
+      });
+}
 
 function urlBase64ToUint8Array (base64String) {
         var padding = '='.repeat((4 - base64String.length % 4) % 4)
@@ -9,7 +36,7 @@ function urlBase64ToUint8Array (base64String) {
         var rawData = window.atob(base64)
         var outputArray = new Uint8Array(rawData.length)
 
-        for (var i = 0; i < rawData.length; ++i) {
+        for (let i = 0; i < rawData.length; ++i) {
                 outputArray[i] = rawData.charCodeAt(i)
         }
         return outputArray;
@@ -28,36 +55,36 @@ function loadVersionBrowser () {
                 let browserversion;
                 let chromeVersion = null;
                 for (var i = 0; i < uaData.brands.length; i++) {
-                        let brand = uaData.brands[i].brand;
-                        browserversion = uaData.brands[i].version;
-                        if (brand.match(/opera|chrome|edge|safari|firefox|msie|trident/i) !== null) {
-                                // If we have a chrome match, save the match, but try to find another match
-                                // E.g. Edge can also produce a false Chrome match.
-                                if (brand.match(/chrome/i) !== null) {
-                                        chromeVersion = browserversion;
-                                }
-                                // If this is not a chrome match return immediately
-                                else {
-                                        browsername = brand.substr(brand.indexOf(' ')+1);
-                                        return {
-                                                name: browsername,
-                                                version: browserversion
-                                        }
-                                }
+                    let brand = uaData.brands[i].brand;
+                    browserversion = uaData.brands[i].version;
+                    if (brand.match(/opera|chrome|edge|safari|firefox|msie|trident/i) !== null) {
+                        // If we have a chrome match, save the match, but try to find another match
+                        // E.g. Edge can also produce a false Chrome match.
+                        if (brand.match(/chrome/i) !== null) {
+                            chromeVersion = browserversion;
                         }
+                        // If this is not a chrome match return immediately
+                        else {
+                            browsername = brand.substr(brand.indexOf(' ')+1);
+                            return {
+                                name: browsername,
+                                version: browserversion,
+                            }
+                        }
+                    }
                 }
                 // No non-Chrome match was found. If we have a chrome match, return it.
                 if (chromeVersion !== null) {
-                        return {
-                                name: "chrome",
-                                version: chromeVersion
-                        }
+                    return {
+                        name: "chrome",
+                        version: chromeVersion,
+                    }
                 }
         }
         // If no userAgentData is not present, or if no match via userAgentData was found,
         // try to extract the browser name and version from userAgent
         const userAgent = navigator.userAgent;
-        var ua = userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        let ua = userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
         if (/trident/i.test(M[1])) {
                 tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
                 return {name: 'IE', version: (tem[1] || '')};
@@ -84,22 +111,23 @@ let applicationServerKey = "BEFuGfKKEFp-kEBMxAIw7ng8HeH_QwnH5_h55ijKD4FRvgdJU1GV
 if ('serviceWorker' in navigator) {
     // The service worker has to store in the root of the app
     // http://stackoverflow.com/questions/29874068/navigator-serviceworker-is-never-ready
-    var browser = loadVersionBrowser();
-    navigator.serviceWorker.register('/navigatorPush.service.js?version=1.0.0').then(function (reg) {
-        reg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array(applicationServerKey)
-        }).then(function (sub) {
-            var endpointParts = sub.endpoint.split('/');
-            var registration_id = endpointParts[endpointParts.length - 1];
-            var data = {
+    let browser = loadVersionBrowser();
+    const messaging = firebase.messaging();
+    navigator.serviceWorker.register('/firebase-messaging-sw.js').then(function (reg) {
+        messaging.getToken({vapidKey: vapidKey}).then((currentToken) => {
+          if (currentToken) {
+            let data = {
                 'browser': browser.name.toUpperCase(),
-                'p256dh': btoa(String.fromCharCode.apply(null, new Uint8Array(sub.getKey('p256dh')))),
-                'auth': btoa(String.fromCharCode.apply(null, new Uint8Array(sub.getKey('auth')))),
                 'name': 'XXXXX',
-                'registration_id': registration_id
+                'registration_id': currentToken,
             };
-        })
+            requestPOSTToServer(data)
+          } else {
+            console.log('No registration token available. Request permission to generate one.');
+          }
+        }).catch((err) => {
+          console.log('An error occurred while retrieving token. ', err);
+        });
     }).catch(function (err) {
         console.log(':^(', err);
     });
