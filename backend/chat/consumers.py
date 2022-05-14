@@ -10,6 +10,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 # Project
 from backend.chat.models import Conversation
 from backend.chat.models import Message
+from backend.chat.utils import get_conversation
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -41,10 +42,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.channel_name,
         )
 
-    def get_conv(self):  # noqa: D102
-        return Conversation.objects.get_or_create(
-            name=self.conv_name)[0]
-
     def parse_message(self, message):  # noqa: D102
         return f'{self.user.username}: {message}'
 
@@ -57,7 +54,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):  # noqa: D102
-        conv = await database_sync_to_async(self.get_conv)()
+        conv = await database_sync_to_async(get_conversation)(self.conv_name)
         if conv and self.user and self.user.is_authenticated:
             text_data_json = json.loads(text_data)
             message = text_data_json['message']

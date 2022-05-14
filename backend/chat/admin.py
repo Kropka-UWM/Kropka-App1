@@ -12,6 +12,11 @@ from .models import Message
 class ConversationAdmin(admin.ModelAdmin):
     """Conversation admin class."""
 
+    list_display = [
+        '__str__',
+        'created_dt',
+    ]
+
     search_fields = [
         'name',
     ]
@@ -24,6 +29,7 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = [
         '__str__',
         'conversation',
+        'created_dt',
     ]
 
     search_fields = [
