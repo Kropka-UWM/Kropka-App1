@@ -1,0 +1,75 @@
+"""Chat implementation."""
+import json
+from channels.db import database_sync_to_async
+from channels.generic.websocket import AsyncWebsocketConsumer
+from backend.chat.models import Message, Conversation
+
+
+class ChatConsumer(AsyncWebsocketConsumer):
+    """Chat consumer async websocket."""
+
+    def __init__(self, *args, **kwargs):  # noqa: D102
+        super().__init__(*args, **kwargs)
+        self.conv_name = ''
+        self.conv_group_name = ''
+        self.user = None
+
+    async def connect(self):  # noqa: D102
+        self.conv_name = self.scope['url_route']['kwargs']['conv_name']
+        self.conv_group_name = f'chat_{self.conv_name}'
+        self.user = self.scope['user']
+        if self.user and self.user.is_authenticated:
+            # Join room group
+            await self.channel_layer.group_add(
+                self.conv_group_name,
+                self.channel_name
+            )
+
+            await self.accept()
+
+    async def disconnect(self, close_code):  # noqa: D102
+        # Leave room group
+        await self.channel_layer.group_discard(
+            self.conv_group_name,
+            self.channel_name
+        )
+
+    def get_conv(self):  # noqa: D102
+        return Conversation.objects.get_or_create(
+            name=self.conv_name)[0]
+
+    def parse_message(self, message):  # noqa: D102
+        return f'{self.user.username}: {message}'
+
+    def create_message_log(self, conv, message):  # noqa: D102
+        Message.objects.create(
+            conversation=conv,
+            user=self.user,
+            content=message,
+        )
+
+    # Receive message from WebSocket
+    async def receive(self, text_data):  # noqa: D102
+        conv = await database_sync_to_async(self.get_conv)()
+        if conv and self.user and self.user.is_authenticated:
+            text_data_json = json.loads(text_data)
+            message = text_data_json['message']
+
+            # Send message to room group
+            await self.channel_layer.group_send(
+                self.conv_group_name,
+                {
+                    'type': 'chat_message',
+                    'message': self.parse_message(message),
+                }
+            )
+            await database_sync_to_async(self.create_message_log)(conv, message)
+
+    # Receive message from room group
+    async def chat_message(self, event):  # noqa: D102
+        message = event['message']
+
+        # Send message to WebSocket
+        await self.send(text_data=json.dumps({
+            'message': message
+        }))
