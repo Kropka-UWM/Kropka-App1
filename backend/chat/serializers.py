@@ -21,10 +21,16 @@ class ConversationSerializer(serializers.ModelSerializer):
 class MessageSerializer(serializers.ModelSerializer):
     """Message serializer."""
 
+    message = serializers.SerializerMethodField()
+
     class Meta:  # noqa: D106
         model = Message
         fields = [
             'id',
             'conversation',
-            'content',
+            'message',
         ]
+
+    @staticmethod
+    def get_message(obj):  # noqa: D102
+        return f'{obj.user}: {obj.content}'
