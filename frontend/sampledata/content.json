@@ -1,6 +1,28 @@
 {
-  "name": "User",
-  "email": "user@gmail.com",
-  "password": "test",
-  "userType": "User"
+  "students":[
+       {
+    "id": "1",
+    "name": "Name",
+    "surname": "surname",
+    "email": "email@o2.com",
+    "active": "yes",
+    "company": "company"
+  },
+  {
+    "id": "1",
+    "name": "Name",
+    "surname": "surname",
+    "email": "email@o2.com",
+    "active": "yes",
+    "company": "company"
+  },
+  {
+    "id": "1",
+    "name": "Name",
+    "surname": "surname",
+    "email": "email@o2.com",
+    "active": "yes",
+    "company": "company"
+  }
+  ]
 }
