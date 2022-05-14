@@ -14,7 +14,7 @@ app_name = 'notify'
 urlpatterns = [
     # path('navigatorPush.service.js', PushNavigatorView.as_view(), name='navigator'),
     path('firebase-messaging-sw.js', FirebasePushView.as_view(), name='firebase_sw'),
-    path('register-push/', register_push, name='push_registration')
+    path('register-push/', register_push, name='push_registration'),
 ]
 
 if getattr(settings, 'DEBUG', False):
