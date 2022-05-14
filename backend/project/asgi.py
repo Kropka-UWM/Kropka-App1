@@ -10,6 +10,9 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/asgi/
 # Standard Library
 import os
 
+# Django
+from django.core.asgi import get_asgi_application
+
 # 3rd-party
 from channels.auth import AuthMiddlewareStack
 from channels.http import AsgiHandler
@@ -21,6 +24,7 @@ from channels.security.websocket import AllowedHostsOriginValidator
 from backend.chat import routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.project.settings')
+django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter({
     'http': AsgiHandler(),
