@@ -10,6 +10,14 @@
 # Czego wymaga backend?
 Backend powinien być obsługiwany od pythona 3.6 w górę (zalecana najbardziej wersja prze ze mnie to 3.8)
 
+Dodatkowo wymaga obsługę ASGI do funkcjonalności chatu.
+
+# Jak stworzyć konto superuser, czyli administratora w django?
+Konto superusera tworzymy za pomocą komendy `python manage.py createsuperuser`, 
+a następnie wypełniamy informacje w interaktywnym kreatorze w konsoli/terminalu.
+
+Dodatkowo warto dodać, że panel administratora do całej bazy znajduje się pod adresem `<tu_domena>/admin/`
+
 # Jak uruchomić projekt?
 Jeżeli chcemy uruchomić projekt, wystarczy iż z poziomu głównego katalogu odpalimy komendę:
 ```
