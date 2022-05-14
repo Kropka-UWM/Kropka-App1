@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='message',
-            name='update_dt',
+            name='updated_dt',
             field=models.DateTimeField(auto_now=True, verbose_name='Update time'),
         ),
     ]
