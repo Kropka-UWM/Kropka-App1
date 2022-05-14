@@ -10,7 +10,7 @@ from .models import Message
 class ConversationSerializer(serializers.ModelSerializer):
     """Conversation serializer."""
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Conversation
         fields = [
             'id',
@@ -21,7 +21,7 @@ class ConversationSerializer(serializers.ModelSerializer):
 class MessageSerializer(serializers.ModelSerializer):
     """Message serializer."""
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = Message
         fields = [
             'id',

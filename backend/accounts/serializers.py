@@ -28,7 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
         return user
 
-    class Meta:
+    class Meta:  # noqa: D106
         model = UserModel
         fields = [
             'id',
