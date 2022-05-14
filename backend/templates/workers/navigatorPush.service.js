@@ -1,7 +1,5 @@
 let getTitle = (title) => {
-    if (title === "") {
-        title = "TITLE DEFAULT";
-    }
+    if (title === "") title = "Domyślny tytuł";
     return title;
 };
 
@@ -28,19 +26,19 @@ self.addEventListener('push', function(event) {
             var message_tag = response_json.tag;
         } catch (err) {
             // Push is a simple text
-            var title = "";
+            var title = '';
             var message = event.data.text();
-            var message_tag = "";
+            var message_tag = '';
         }
         self.registration.showNotification(getTitle(title), getNotificationOptions(message, message_tag));
         // Optional: Comunicating with our js application. Send a signal
         self.clients.matchAll({includeUncontrolled: true, type: 'window'}).then(function (clients) {
-                clients.forEach(function (client) {
-                        client.postMessage({
-                                "data": message_tag,
-                                "data_title": title,
-                                "data_body": message});
-                        });
+            clients.forEach(function (client) {
+                client.postMessage({
+                    'data': message_tag,
+                    'data_title': title,
+                    'data_body': message});
+                });
         });
 });
 

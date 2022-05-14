@@ -22,6 +22,7 @@ class Conversation(models.Model):
     class Meta:  # noqa: D106
         verbose_name = _('Conversation')
         verbose_name_plural = _('Conversations')
+        ordering = ['-created_dt']
 
 
 class Message(models.Model):
@@ -48,3 +49,4 @@ class Message(models.Model):
     class Meta:  # noqa: D106
         verbose_name = _('Message')
         verbose_name_plural = _('Messages')
+        ordering = ['-created_dt']
