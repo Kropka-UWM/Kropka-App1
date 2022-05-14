@@ -3,6 +3,8 @@ import { onMounted } from "vue";
 import axios from "axios";
 import { key } from "@/store";
 import { useStore } from "vuex";
+import ToastMangaer from "./components/ToastMangaer.vue";
+import ToastManager from "./components/ToastManager.vue";
 
 const store = useStore(key);
 
@@ -26,18 +28,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>|
-    <router-link to="/user/login">Login</router-link>|
-    <router-link to="/panel">Panel</router-link>
-  </div>
-  <router-view />
+  <ToastManager></ToastManager>
+  <main v-bind:class="{ dark: store.state.darkMode }">
+    <router-view />
+  </main>
 </template>
 
 <style lang="scss">
+body {
+  min-height: 100vh;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
