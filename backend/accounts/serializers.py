@@ -25,6 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             password=validated_data['password'],
             account_type=validated_data['account_type'],
+            account_notes=validated_data['account_notes'],
         )
         return user
 
@@ -38,4 +39,5 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'password',
             'account_type',
+            'account_notes',
         ]
