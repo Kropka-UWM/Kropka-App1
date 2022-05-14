@@ -27,7 +27,7 @@ class GetConversationsView(ListAPIView):
         messages = Message.objects.filter(user=self.request.user)
         return qs.filter(
             message__id__in=messages.values_list('id', flat=True),
-        ).order_by('created_dt')[:100]
+        ).distinct().order_by('created_dt')[:100]
 
 
 class GetMessagesView(ListAPIView):
