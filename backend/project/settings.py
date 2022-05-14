@@ -220,6 +220,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+DEFAULT_FROM_EMAIL = 'uwm.kropka.masters@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'uwm.kropka.masters@gmail.com'
+EMAIL_HOST_PASSWORD = 'costam123'
+
 FCM_API_KEY = "AAAAD9bfjIY:APA91bGH8OpKBJNrym_NuxjOdW_RWJPpIfWls8ldTUvqkfG6AHfGE3GCnaONL8TrWTTd3qqCAkE2wWRsSgICH8pTdUUlW9x3NjPZ8ZyQtcRsdqm_MFxvag6QKixF0iXjG4EAdoskJmxr"
 
 PUSH_NOTIFICATIONS_SETTINGS = {

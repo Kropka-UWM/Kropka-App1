@@ -8,7 +8,6 @@ from django.core.files.base import ContentFile
 from django.http import FileResponse
 from django.http import Http404
 from django.template.loader import render_to_string
-from django.views.generic import TemplateView
 
 # 3rd-party
 from rest_framework import permissions
