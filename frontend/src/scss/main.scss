@@ -1,0 +1,8 @@
+$primary: #123;
+
+body {
+    background-color:red;
+    background-color: $primary;
+}
+@import "./variables";
+@import "bootstrap/scss/bootstrap.scss";
