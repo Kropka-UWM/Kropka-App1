@@ -1,4 +1,5 @@
 """Chat implementation."""
+
 # Standard Library
 import json
 
@@ -14,7 +15,7 @@ from backend.chat.models import Message
 class ChatConsumer(AsyncWebsocketConsumer):
     """Chat consumer async websocket."""
 
-    def __init__(self, *args, **kwargs):  # noqa: D102
+    def __init__(self, *args, **kwargs):  # noqa: D107
         super().__init__(*args, **kwargs)
         self.conv_name = ''
         self.conv_group_name = ''
@@ -28,7 +29,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             # Join room group
             await self.channel_layer.group_add(
                 self.conv_group_name,
-                self.channel_name
+                self.channel_name,
             )
 
             await self.accept()
@@ -37,7 +38,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # Leave room group
         await self.channel_layer.group_discard(
             self.conv_group_name,
-            self.channel_name
+            self.channel_name,
         )
 
     def get_conv(self):  # noqa: D102
@@ -67,7 +68,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 {
                     'type': 'chat_message',
                     'message': self.parse_message(message),
-                }
+                },
             )
             await database_sync_to_async(self.create_message_log)(conv, message)
 
@@ -77,5 +78,5 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
-            'message': message
+            'message': message,
         }))
