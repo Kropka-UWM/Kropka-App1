@@ -1,7 +1,12 @@
 """Gen based factories."""
-import factory
+# Django
 from django.utils import timezone
+
+# 3rd-party
+import factory
 from factory.django import DjangoModelFactory
+
+# Project
 from backend.accounts.models import CustomUser
 
 

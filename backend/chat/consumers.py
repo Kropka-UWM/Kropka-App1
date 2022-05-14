@@ -1,8 +1,14 @@
 """Chat implementation."""
+# Standard Library
 import json
+
+# 3rd-party
 from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
-from backend.chat.models import Message, Conversation
+
+# Project
+from backend.chat.models import Conversation
+from backend.chat.models import Message
 
 
 class ChatConsumer(AsyncWebsocketConsumer):

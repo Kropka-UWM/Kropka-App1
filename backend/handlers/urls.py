@@ -1,6 +1,9 @@
 """Urls file."""
+# Django
 from django.conf import settings
 from django.urls import path
+
+# Local
 from .views import Demo404
 from .views import Demo500
 
