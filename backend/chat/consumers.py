@@ -54,10 +54,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     # Receive message from WebSocket
     async def receive(self, text_data):  # noqa: D102
         conv = await database_sync_to_async(get_conversation)(self.conv_name)
-        if conv and self.user and self.user.is_authenticated:
-            text_data_json = json.loads(text_data)
-            message = text_data_json['message']
-
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
+        if message and conv and self.user and self.user.is_authenticated:
             # Send message to room group
             await self.channel_layer.group_send(
                 self.conv_group_name,
