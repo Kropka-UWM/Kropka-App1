@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-04 12:11+0200\n"
-"PO-Revision-Date: 2022-05-04 12:13+0124\n"
-"Last-Translator:   <patryk@webtechnika.pl>\n"
+"POT-Creation-Date: 2022-05-14 22:58+0200\n"
+"PO-Revision-Date: 2022-05-14 22:58+0124\n"
+"Last-Translator:   <patryk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,116 +19,122 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: backend/accounts/models.py:14
+#: backend/accounts/models.py:15
 msgid "Name of team"
 msgstr "Nazwa zespołu"
 
-#: backend/accounts/models.py:18
+#: backend/accounts/models.py:19
 msgid "Logo of student team"
 msgstr "Logo zespołu studentów"
 
-#: backend/accounts/models.py:26
-#| msgid "Student"
+#: backend/accounts/models.py:22 backend/accounts/models.py:43
+#: backend/chat/models.py:17 backend/chat/models.py:43
+msgid "Creation time"
+msgstr "Czas utworzenia"
+
+#: backend/accounts/models.py:28
 msgid "Students team"
 msgstr "Zespół studentów"
 
-#: backend/accounts/models.py:27
-#| msgid "Student"
+#: backend/accounts/models.py:29
 msgid "Students teams"
 msgstr "Zespoły studentów"
 
-#: backend/accounts/models.py:33
-#| msgid "Name of team"
+#: backend/accounts/models.py:36
 msgid "Name of company"
 msgstr "Nazwa firmy"
 
-#: backend/accounts/models.py:37
-#| msgid "Name of team"
+#: backend/accounts/models.py:40
 msgid "Logo of company"
 msgstr "Logo firmy"
 
-#: backend/accounts/models.py:45 backend/accounts/models.py:57
-#: backend/accounts/models.py:80
+#: backend/accounts/models.py:49 backend/accounts/models.py:62
+#: backend/accounts/models.py:85
 msgid "Company"
 msgstr "Firma"
 
-#: backend/accounts/models.py:46
-#| msgid "Company"
+#: backend/accounts/models.py:50
 msgid "Companies"
 msgstr "Firmy"
 
-#: backend/accounts/models.py:58
+#: backend/accounts/models.py:63
 msgid "Leader"
 msgstr "Przewodniczący"
 
-#: backend/accounts/models.py:59
-#| msgid "Student"
+#: backend/accounts/models.py:64
 msgid "Student leader"
 msgstr "Szef zespołu"
 
-#: backend/accounts/models.py:60
+#: backend/accounts/models.py:65
 msgid "Student"
 msgstr "Student"
 
-#: backend/accounts/models.py:64
+#: backend/accounts/models.py:69
 msgid "Account type"
 msgstr "Typ konta"
 
-#: backend/accounts/models.py:73
+#: backend/accounts/models.py:78
 msgid "Team assigned to student"
 msgstr "Zespół przypisany do studenta"
 
-#: backend/accounts/models.py:82
+#: backend/accounts/models.py:87
 msgid "Index student number"
 msgstr "Numer indeksu studenta"
 
-#: backend/accounts/models.py:84
+#: backend/accounts/models.py:89
 msgid "Students amount for project"
 msgstr "Liczba studentów dla projektu"
 
-#: backend/accounts/models.py:104
+#: backend/accounts/models.py:97
+msgid "Registration notes"
+msgstr "Uwagi odnośnie rejestracji"
+
+#: backend/accounts/models.py:110
 msgid "No more than one leader can exist in the team!"
 msgstr "Nie może istnieć więcej niż jeden szef zespołu studentów!"
 
-#: backend/chat/models.py:11
-#| msgid "Name of team"
+#: backend/chat/models.py:14
 msgid "Name of conversation"
 msgstr "Nazwa konwersacji"
 
-#: backend/chat/models.py:19
+#: backend/chat/models.py:23
 msgid "Conversation"
 msgstr "Konwersacja"
 
-#: backend/chat/models.py:20
+#: backend/chat/models.py:24
 msgid "Conversations"
 msgstr "Konwersacje"
 
-#: backend/chat/models.py:35
+#: backend/chat/models.py:40
 msgid "Content of message"
 msgstr "Treść wiadomości"
 
-#: backend/chat/models.py:40
+#: backend/chat/models.py:44
+msgid "Update time"
+msgstr "Czas aktualizacji"
+
+#: backend/chat/models.py:47
 #, python-brace-format
 msgid "Message {0} from user {1}"
 msgstr "Wiadomość {0} od użytkownika {1}"
 
-#: backend/chat/models.py:43
+#: backend/chat/models.py:50
 msgid "Message"
 msgstr "Wiadomość"
 
-#: backend/chat/models.py:44
+#: backend/chat/models.py:51
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: backend/project/settings.py:157
+#: backend/project/settings.py:169
 msgid "Polish"
 msgstr "Polski"
 
-#: backend/project/settings.py:158
+#: backend/project/settings.py:170
 msgid "English"
 msgstr "Angielski"
 
-#: backend/project/settings.py:166
+#: backend/project/settings.py:178
 msgid "Polski"
 msgstr "Polski"
 
@@ -136,13 +142,18 @@ msgstr "Polski"
 msgid "Error 404"
 msgstr "Błąd 404"
 
-#: backend/templates/errors/404.html:19 backend/templates/errors/500.html:19
-msgid "Error 500 - contact the administration."
-msgstr "Błąd 500 - skontaktuj się z administracją."
+#: backend/templates/errors/404.html:19
+msgid "Error 404 - contact the administration."
+msgstr "Błąd 404 - skontaktuj się z administracją."
 
 #: backend/templates/errors/500.html:4
 msgid "Error 500"
 msgstr "Błąd 500"
 
-#~ msgid "Error 404 - contact the administration."
-#~ msgstr "Błąd 404 - skontaktuj się z administracją."
+#: backend/templates/errors/500.html:19
+msgid "Error 500 - contact the administration."
+msgstr "Błąd 500 - skontaktuj się z administracją."
+
+#: backend/templates/pdf_template.html:4
+msgid "PDF Template"
+msgstr "Szablon PDF"

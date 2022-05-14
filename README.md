@@ -19,6 +19,7 @@ a następnie wypełniamy informacje w interaktywnym kreatorze w konsoli/terminal
 Dodatkowo warto dodać, że panel administratora do całej bazy znajduje się pod adresem `<tu_domena>/admin/`
 
 # Jak uruchomić projekt?
+Musimy najpierw utworzyć katalog logs w katalogu backend.
 Jeżeli chcemy uruchomić projekt, wystarczy iż z poziomu głównego katalogu odpalimy komendę:
 ```
 python manage.py migrate
