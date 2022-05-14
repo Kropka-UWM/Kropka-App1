@@ -37,7 +37,7 @@ class Message(models.Model):
         max_length=255,
     )
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
-    update_dt = models.DateTimeField(_('Update time'), auto_now=True)
+    updated_dt = models.DateTimeField(_('Update time'), auto_now=True)
 
     def __str__(self):  # noqa: D102
         return _('Message {0} from user {1}').format(self.id, self.user)
