@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Chat demo [{{ conv_name }}]</title>
+    <title>Chat demo [{{ conv.name }}]</title>
 </head>
 <body>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
@@ -26,10 +26,13 @@
                 }
             })
 
+            let host = window.location.host;
+            if(host.split(':')[0] !== 'localhost') host = `${host}:8001`
+
             const chatSocket = new WebSocket(
                 'ws://'
-                + window.location.host
-                + ':8001/ws/chat/'
+                + host
+                + '/ws/chat/'
                 + convName
                 + '/'
             );
