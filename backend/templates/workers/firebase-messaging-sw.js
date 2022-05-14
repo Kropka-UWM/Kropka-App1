@@ -8,7 +8,7 @@ const firebaseApp = firebase.initializeApp({
   projectId: "rock-sublime-252011",
   storageBucket: "rock-sublime-252011.appspot.com",
   messagingSenderId: "68029484166",
-  appId: "1:68029484166:web:2002ba7ad6d9bba88a9507"
+  appId: "1:68029484166:web:2002ba7ad6d9bba88a9507",
 });
 
 const messaging = firebase.messaging();
