@@ -1,4 +1,5 @@
-"""Chat routing"""
+"""Chat routing."""
+
 # Django
 from django.urls import path
 
