@@ -91,6 +91,7 @@ class CustomUser(AbstractUser):
         null=True,
         blank=True,
     )
+    account_notes = models.TextField(_('Registration notes'), null=True, blank=True)
 
     def __str__(self):  # noqa: D102
         get_name = super().__str__()
