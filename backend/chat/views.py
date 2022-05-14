@@ -1,4 +1,5 @@
 """Chat view file."""
+# Django
 from django.views.generic import TemplateView
 
 # class CreateConversationView(CreateAPIView):
