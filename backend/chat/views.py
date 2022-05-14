@@ -21,10 +21,12 @@ class GetConversationsView(ListAPIView):
     serializer_class = ConversationSerializer
     queryset = Conversation.objects.all()
 
-    def get_queryset(self):
+    def get_queryset(self):  # noqa: D102
         qs = super().get_queryset()
         messages = Message.objects.filter(user=self.request.user)
-        return qs.filter(message__id__in=messages.values_list('id', flat=True)).order_by('created_dt')[:100]
+        return qs.filter(
+            message__id__in=messages.values_list('id', flat=True),
+        ).order_by('created_dt')[:100]
 
 
 class GetMessagesView(ListAPIView):
@@ -34,7 +36,7 @@ class GetMessagesView(ListAPIView):
     serializer_class = MessageSerializer
     queryset = Message.objects.all()
 
-    def get_queryset(self):
+    def get_queryset(self):  # noqa: D102
         qs = super().get_queryset()
         filter_kwargs = {}
         if 'conv_id' in self.kwargs:
@@ -52,4 +54,3 @@ class ChatDemoView(TemplateView):
         conv_name = kwargs.get('conv', 'test')
         context['conv'] = get_conversation(conv_name)
         return context
-
