@@ -1,9 +1,12 @@
 """Urls file."""
+# Django
 from django.conf import settings
 from django.urls import path
+
+# Local
+# from .views import PushNavigatorView
 from .views import FirebasePushView
 from .views import PushDemoView
-# from .views import PushNavigatorView
 from .views import register_push
 
 app_name = 'notify'

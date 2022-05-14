@@ -14,6 +14,7 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+# Django
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -236,7 +237,7 @@ PUSH_NOTIFICATIONS_SETTINGS = {
 }
 
 try:
-    # 3rd-party
+    # Project
     from backend.project.settings_local import *  # noqa: F403, F401
 except ImportError:
     pass
