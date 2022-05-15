@@ -11,3 +11,5 @@ channels==3.0.4
 channels-redis==3.4.0
 django-push-notifications[WP,APNS]==3.0.0
 django-import-export==2.7.1
+hyperframe==6.0.1
+h2==4.1.0
