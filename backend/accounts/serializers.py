@@ -5,8 +5,8 @@ from django.contrib.auth import get_user_model
 # 3rd-party
 from rest_framework import serializers
 
-# Project
-from backend.accounts.models import CustomUser
+# Local
+from .models import CustomUser
 
 UserModel = get_user_model()
 
