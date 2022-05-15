@@ -3,7 +3,6 @@
 from django.contrib import admin
 
 # Local
-# Register your models here.
 from .models import Conversation
 from .models import Message
 
