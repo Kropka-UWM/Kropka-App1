@@ -18,6 +18,12 @@ a następnie wypełniamy informacje w interaktywnym kreatorze w konsoli/terminal
 
 Dodatkowo warto dodać, że panel administratora do całej bazy znajduje się pod adresem `<tu_domena>/admin/`
 
+# Fix pod python 3.10:
+```
+pip install hyperframe==6.0.1
+pip install h2==4.1.0
+```
+
 # Jak uruchomić projekt?
 Musimy najpierw utworzyć katalog logs w katalogu backend.
 Jeżeli chcemy uruchomić projekt, wystarczy iż z poziomu głównego katalogu odpalimy komendę:
