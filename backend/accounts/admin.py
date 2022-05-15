@@ -2,14 +2,20 @@
 # Django
 from django.contrib import admin
 
+# 3rd-party
+from import_export.admin import ExportMixin
+
 # Local
 from .models import Company
 from .models import CustomUser
 from .models import StudentTeam
+from .resources import CompanyResource
+from .resources import CustomUserResource
+from .resources import StudentTeamResource
 
 
 @admin.register(StudentTeam)
-class StudentTeamAdmin(admin.ModelAdmin):
+class StudentTeamAdmin(ExportMixin, admin.ModelAdmin):
     """Student Team admin."""
 
     list_display = [
@@ -18,10 +24,11 @@ class StudentTeamAdmin(admin.ModelAdmin):
     search_fields = [
         'name',
     ]
+    resource_class = StudentTeamResource
 
 
 @admin.register(Company)
-class CompanyAdmin(admin.ModelAdmin):
+class CompanyAdmin(ExportMixin, admin.ModelAdmin):
     """Company admin."""
 
     list_display = [
@@ -30,10 +37,11 @@ class CompanyAdmin(admin.ModelAdmin):
     search_fields = [
         'name',
     ]
+    resource_class = CompanyResource
 
 
 @admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
+class CustomUserAdmin(ExportMixin, admin.ModelAdmin):
     """Custom User admin."""
 
     list_display = [
@@ -47,3 +55,4 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_filter = [
         'account_type',
     ]
+    resource_class = CustomUserResource
