@@ -28,4 +28,5 @@ jobs:
     - name: Run Flake8
       run: |
         flake8 .
+        mkdir backend/logs
         python manage.py test
