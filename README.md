@@ -35,7 +35,7 @@ Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na str
 * **Autentykacja**:
   * /register/
   * /login/
-  * /logout
+  * /logout/
   * /password-reset/
   * /get_account_info/
   * /password/change/
