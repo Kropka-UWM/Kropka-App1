@@ -1,6 +1,5 @@
 """Views file."""
 
-# Create your views here.
 # Django
 from django.http import Http404
 from django.http import JsonResponse
