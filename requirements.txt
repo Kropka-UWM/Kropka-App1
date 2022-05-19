@@ -1,13 +1,13 @@
 django==3.2.13
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.1.0
-django-cors-headers==3.11.0
+django-cors-headers==3.12.0
 psycopg2-binary==2.9.3
 django-rosetta==0.9.8
-weasyprint==54.3
+weasyprint==55.0
 requests==2.27.1
 dj-rest-auth==2.2.4
 channels==3.0.4
 channels-redis==3.4.0
 django-push-notifications[WP,APNS]==3.0.0
-django-import-export==2.7.1
+django-import-export==2.8.0
