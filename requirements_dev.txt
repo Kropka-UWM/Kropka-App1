@@ -4,8 +4,6 @@ codecov==2.1.10
 coloredlogs==14.0
 coverage==5.3
 django-naomi==0.8
-factory_boy==2.8.1
-faker==4.18.0
 flake8-blind-except==0.1.1
 flake8-commas==2.0.0
 flake8-docstrings==1.5.0
