@@ -1,0 +1,27 @@
+{% load static i18n %}
+<html>
+<head>
+    <title>{% trans 'PDF Template' %}</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <ul>
+        {% for company in companies %}
+        <li>{{ company }}</li>
+            {% if company.team_list %}
+            <ul>
+            {% for team in company.team_list %}
+                <li>{{ team }}</li>
+                {% if team.user_list %}
+                    <ul>
+                    {% for user in team.user_list %}
+                    <li>{{ user }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endfor %}
+</body>
+</html>
