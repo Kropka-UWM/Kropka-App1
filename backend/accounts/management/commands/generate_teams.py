@@ -32,6 +32,6 @@ class Command(BaseCommand):
             )
         except Company.DoesNotExist:
             self.stdout.write(self.style.SUCCESS(
-                    f'Company with given ID does not exist!',
+                    'Company with given ID does not exist!',
                 ),
             )
