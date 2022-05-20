@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from backend.project import settings
 
 
-def send_email_to_user(user, title, context, template_name=None):
+def send_email_to(email, title, context, template_name=None, attachments=None):
     """Send email contains order-data to client."""
     if not template_name:
         template_name = 'pdf_template.html'
@@ -15,7 +15,10 @@ def send_email_to_user(user, title, context, template_name=None):
         title,
         render_to_string(template_name, context),
         settings.DEFAULT_FROM_EMAIL,
-        [user.email],
+        [email],
     )
+    if attachments:
+        for attach in attachments:
+            msg.attach(attach['name'], attach['file'].getvalue())
     msg.content_subtype = 'html'
     msg.send()
