@@ -14,19 +14,6 @@ from .resources import CustomUserResource
 from .resources import StudentTeamResource
 
 
-@admin.register(StudentTeam)
-class StudentTeamAdmin(ExportMixin, admin.ModelAdmin):
-    """Student Team admin."""
-
-    list_display = [
-        'name',
-    ]
-    search_fields = [
-        'name',
-    ]
-    resource_class = StudentTeamResource
-
-
 @admin.register(Company)
 class CompanyAdmin(ExportMixin, admin.ModelAdmin):
     """Company admin."""
@@ -40,6 +27,20 @@ class CompanyAdmin(ExportMixin, admin.ModelAdmin):
     resource_class = CompanyResource
 
 
+@admin.register(StudentTeam)
+class StudentTeamAdmin(ExportMixin, admin.ModelAdmin):
+    """Student Team admin."""
+
+    list_display = [
+        'name',
+        'company',
+    ]
+    search_fields = [
+        'name',
+    ]
+    resource_class = StudentTeamResource
+
+
 @admin.register(CustomUser)
 class CustomUserAdmin(ExportMixin, admin.ModelAdmin):
     """Custom User admin."""
@@ -47,10 +48,13 @@ class CustomUserAdmin(ExportMixin, admin.ModelAdmin):
     list_display = [
         '__str__',
         'account_type',
+        'team',
         'nr_index',
     ]
     search_fields = [
         'nr_index',
+        'company__name'
+        'team__name',
     ]
     list_filter = [
         'account_type',
