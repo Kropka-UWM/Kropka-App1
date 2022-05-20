@@ -1,6 +1,7 @@
 """Serializers file."""
 # Django
 from django.contrib.auth import get_user_model
+from django.http import Http404
 
 # 3rd-party
 from rest_framework import serializers
@@ -39,5 +40,18 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'password',
             'account_type',
+            'average',
             'account_notes',
         ]
+
+
+class JustEmailSerializer(serializers.Serializer):
+    """Just email serializer."""
+
+    email = serializers.EmailField(required=False)
+
+    def create(self, validated_data):  # noqa: D102
+        pass
+
+    def update(self, instance, validated_data):  # noqa: D102
+        pass
