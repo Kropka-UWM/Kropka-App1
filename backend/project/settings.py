@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
+    'backend.settings.apps.SettingsConfig',
     'backend.handlers.apps.HandlersConfig',
     'backend.accounts.apps.AccountsConfig',
     'backend.notify.apps.NotifyConfig',
