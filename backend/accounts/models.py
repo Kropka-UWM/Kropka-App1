@@ -101,6 +101,12 @@ class CustomUser(AbstractUser):
         blank=True,
     )
     account_notes = models.TextField(_('Registration notes'), null=True, blank=True)
+    average = models.DecimalField(
+        _('Average from studies grades'),
+        max_digits=5,
+        decimal_places=2,
+        null=True, blank=True,
+    )
 
     def __str__(self):  # noqa: D105
         get_name = super().__str__()
