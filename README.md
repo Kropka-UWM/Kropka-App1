@@ -49,6 +49,7 @@ Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na str
   * /get_conversations/
   * /get_messages/
   * /get_messages/<conversation_id>/
+  * /get_site_settings/
 
 # Widoki [Demo]:
 * /demo404/
