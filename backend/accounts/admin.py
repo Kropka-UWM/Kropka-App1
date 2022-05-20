@@ -53,7 +53,7 @@ class CustomUserAdmin(ExportMixin, admin.ModelAdmin):
     ]
     search_fields = [
         'nr_index',
-        'company__name'
+        'company__name',
         'team__name',
     ]
     list_filter = [
