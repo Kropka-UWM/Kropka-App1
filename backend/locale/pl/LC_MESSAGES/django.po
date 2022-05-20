@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-14 22:58+0200\n"
-"PO-Revision-Date: 2022-05-14 22:58+0124\n"
-"Last-Translator:   <patryk@gmail.com>\n"
+"POT-Creation-Date: 2022-05-20 11:13+0200\n"
+"PO-Revision-Date: 2022-05-20 11:16+0124\n"
+"Last-Translator:   <pszczepanski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgid "Logo of company"
 msgstr "Logo firmy"
 
 #: backend/accounts/models.py:49 backend/accounts/models.py:62
-#: backend/accounts/models.py:85
+#: backend/accounts/models.py:91
 msgid "Company"
 msgstr "Firma"
 
@@ -70,26 +70,34 @@ msgid "Student"
 msgstr "Student"
 
 #: backend/accounts/models.py:69
+msgid "Email address"
+msgstr "Adres email"
+
+#: backend/accounts/models.py:72
+msgid "A user with that email already exists."
+msgstr "Użytkownik z podanym adresem email już istnieje!"
+
+#: backend/accounts/models.py:75
 msgid "Account type"
 msgstr "Typ konta"
 
-#: backend/accounts/models.py:78
+#: backend/accounts/models.py:84
 msgid "Team assigned to student"
 msgstr "Zespół przypisany do studenta"
 
-#: backend/accounts/models.py:87
+#: backend/accounts/models.py:93
 msgid "Index student number"
 msgstr "Numer indeksu studenta"
 
-#: backend/accounts/models.py:89
+#: backend/accounts/models.py:95
 msgid "Students amount for project"
 msgstr "Liczba studentów dla projektu"
 
-#: backend/accounts/models.py:97
+#: backend/accounts/models.py:103
 msgid "Registration notes"
 msgstr "Uwagi odnośnie rejestracji"
 
-#: backend/accounts/models.py:110
+#: backend/accounts/models.py:116
 msgid "No more than one leader can exist in the team!"
 msgstr "Nie może istnieć więcej niż jeden szef zespołu studentów!"
 
@@ -126,15 +134,15 @@ msgstr "Wiadomość"
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: backend/project/settings.py:169
+#: backend/project/settings.py:170
 msgid "Polish"
 msgstr "Polski"
 
-#: backend/project/settings.py:170
+#: backend/project/settings.py:171
 msgid "English"
 msgstr "Angielski"
 
-#: backend/project/settings.py:178
+#: backend/project/settings.py:179
 msgid "Polski"
 msgstr "Polski"
 
