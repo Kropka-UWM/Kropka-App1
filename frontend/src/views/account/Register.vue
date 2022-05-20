@@ -13,24 +13,39 @@ const router = useRouter();
 let error = ref<ErrorMessage>(null);
 
 const user: User = reactive({
-  name: "User",
+  name: "First name",
+  last_name: "Last name",
+  userName: "username",
   email: "Email",
   password: "Password",
-  userType: "User",
+  userType: "Student",
 });
 
 function register() {
   store
     .dispatch("register", {
-      name: user.name,
+      first_name: user.name,
+      last_name: user.lastName,
       email: user.email,
+      username: user.userName,
       password: user.password,
+      account_type: user.userType,
     })
     .then(() => {
-      router.push({ name: "About" });
+      store.commit("ADD_TOAST", {
+        text: "Zarejestrowano pomyślnie",
+        toastClass: "bg-success",
+        textClass: "text-white",
+      });
+      console.log("xD");
+      router.push({ name: "login" });
     })
     .catch((err) => {
-      error.value = err.response;
+      store.commit("ADD_TOAST", {
+        text: err.response.data,
+        toastClass: "bg-danger",
+        textClass: "text-white",
+      });
     });
 }
 </script>
@@ -38,14 +53,29 @@ function register() {
 <template>
   <div class="register">
     <form @submit.prevent="register">
-      <label for="name"> Name: </label>
+      <label for="userName"> Username: </label>
+      <input v-model="user.userName" type="text" name="userName" value />
+
+      <label for="name"> First Name: </label>
       <input v-model="user.name" type="text" name="name" value />
+
+      <label for="lastName"> last Name: </label>
+      <input v-model="user.lastName" type="text" name="name" value />
 
       <label for="email"> Email: </label>
       <input v-model="user.email" type="email" name="email" value />
 
       <label for="password"> Password: </label>
       <input v-model="user.password" type="password" name="password" value />
+
+      <label for="userType">User type:</label>
+
+      <select v-model="user.userType" name="userType" id="userType">
+        <option value="company">Company</option>
+        <option value="leader">Leader</option>
+        <option value="student leader">Student leader</option>
+        <option value="student">Student</option>
+      </select>
 
       <button type="submit" name="button">Register</button>
     </form>

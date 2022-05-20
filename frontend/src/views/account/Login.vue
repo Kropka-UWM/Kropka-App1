@@ -97,5 +97,9 @@ function login() {
     </form>
 
     <p v-if="error">{{ error }}</p>
+
+    <router-link class="navbar-brand" to="/register"
+      >Zarejestruj się</router-link
+    >
   </div>
 </template>
