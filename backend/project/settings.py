@@ -164,7 +164,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl-pl'
+TIME_ZONE = 'Europe/Warsaw'
 
 gettext = lambda s: s  # noqa: E731
 LANGUAGES = [
@@ -180,8 +181,6 @@ ROSETTA_LANGUAGES = [
     ('pl', _('Polski')),
 ]
 
-
-TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
 
