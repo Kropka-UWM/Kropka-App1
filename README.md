@@ -56,3 +56,4 @@ Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na str
 * /chat-demo/
 * /chat-demo/<chat_name>/
 * /push-demo/
+* /get_site_settings/
