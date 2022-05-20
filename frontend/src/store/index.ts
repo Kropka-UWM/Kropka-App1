@@ -41,15 +41,12 @@ export const store = createStore<State>({
   },
   actions: {
     async register({ commit }, credentials) {
-      const { data } = await axios.post(
-        "//localhost:3000 /register",
-        credentials
-      );
+      const { data } = await axios.post("http://localhost:8000/register/", credentials);
       commit("SET_USER_DATA", data);
     },
     async login({ commit }, credentials) {
       console.log(credentials)
-      const { data } = await axios.post("//localhost:3000/login", credentials);
+      const { data } = await axios.post("http://localhost:8000/login/", credentials);
       commit("SET_USER_DATA", data);
     },
     logout({ commit }) {
