@@ -65,6 +65,12 @@ class CustomUser(AbstractUser):
         (STUDENT, _('Student')),
     ]
 
+    email = models.EmailField(
+        _('Email address'),
+        blank=True,
+        unique=True,
+        error_messages={'unique': _('A user with that email already exists.')},
+    )
     account_type = models.CharField(
         _('Account type'),
         max_length=255,
