@@ -12,5 +12,5 @@ app_name = 'accounts'
 urlpatterns = [
     path('register/', CreateUserView.as_view(), name='rest_register'),
     path('get_account_info/', GetAccountInfo.as_view(), name='get_account_info'),
-    path('generate_summary/', PDFSummaryView.as_view(), name='gen_summary')
+    path('generate_summary/', PDFSummaryView.as_view(), name='gen_summary'),
 ]
