@@ -8,33 +8,13 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
-class StudentTeam(models.Model):
-    """Student Team model."""
-
-    name = models.CharField(
-        _('Name of team'),
-        max_length=255,
-    )
-    logo = models.ImageField(
-        _('Logo of student team'),
-        null=True, blank=True,
-    )
-    created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
-
-    def __str__(self):  # noqa: D105
-        return self.name
-
-    class Meta:  # noqa: D106
-        verbose_name = _('Students team')
-        verbose_name_plural = _('Students teams')
-
-
 class Company(models.Model):
     """Company model."""
 
     name = models.CharField(
         _('Name of company'),
         max_length=255,
+        unique=True,
     )
     logo = models.ImageField(
         _('Logo of company'),
@@ -48,6 +28,34 @@ class Company(models.Model):
     class Meta:  # noqa: D106
         verbose_name = _('Company')
         verbose_name_plural = _('Companies')
+
+
+class StudentTeam(models.Model):
+    """Student Team model."""
+
+    company = models.ForeignKey(
+        Company,
+        null=True, blank=True,
+        verbose_name=_('Company that team belongs to'),
+        on_delete=models.DO_NOTHING,
+    )
+    name = models.CharField(
+        _('Name of team'),
+        max_length=255,
+        unique=True,
+    )
+    logo = models.ImageField(
+        _('Logo of student team'),
+        null=True, blank=True,
+    )
+    created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
+
+    def __str__(self):  # noqa: D105
+        return self.name
+
+    class Meta:  # noqa: D106
+        verbose_name = _('Students team')
+        verbose_name_plural = _('Students teams')
 
 
 class CustomUser(AbstractUser):
