@@ -24,6 +24,7 @@ from .models import Company
 from .models import StudentTeam
 from .serializers import JustEmailSerializer
 from .serializers import UserSerializer
+from .utils import send_email_to
 
 
 class CreateUserView(CreateAPIView):
@@ -51,9 +52,6 @@ class PDFSummaryView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = JustEmailSerializer
 
-    def send_mail(self, email):  # noqa: D102
-        pass
-
     def gen_summary_pdf(self):  # noqa: D102
         companies = Company.objects.prefetch_related(
             Prefetch('studentteam_set', queryset=StudentTeam.objects.prefetch_related(
@@ -67,21 +65,22 @@ class PDFSummaryView(APIView):
             base_url=self.request.build_absolute_uri(),
         )
         file_buffer = io.BytesIO(html.write_pdf())
-        response = FileResponse(
-            ContentFile(file_buffer.getvalue(), 'example.pdf'),
-            as_attachment=True, content_type='application/pdf',
-        )
-        return response
+        return file_buffer
 
     def post(self, request, format=None):  # noqa: D102
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             data = serializer.validated_data
             file = self.gen_summary_pdf()
+            fname = 'podsumowanie_i_kropka.pdf'
             if 'email' in data:
-                self.send_mail(data['email'])
+                attachments = [{'file': file, 'name': fname}]
+                email = data['email']
+                send_email_to(
+                    email, 'Raport rozłożenia studentów z aplikacji i kropka',
+                    {}, 'emails/summary.html', attachments)
             return FileResponse(
-                ContentFile(file.getvalue(), 'podsumowanie_i_kropka.pdf'),
+                ContentFile(file.getvalue(), fname),
                 as_attachment=True, content_type='applicatiopn/pdf',
             )
         return Response(
