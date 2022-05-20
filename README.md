@@ -57,3 +57,10 @@ Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na str
 * /chat-demo/
 * /chat-demo/<chat_name>/
 * /push-demo/
+
+# Komendy (python manage.py ...):
+* generate_companies <ilosc>
+* generate_leaders <ilosc>
+* generate_teams <company_id> <ilosc>
+* generate_user_companies <ilosc>
+* generate_students <ilosc>
