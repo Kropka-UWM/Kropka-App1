@@ -1,7 +1,6 @@
 """Serializers file."""
 # Django
 from django.contrib.auth import get_user_model
-from django.http import Http404
 
 # 3rd-party
 from rest_framework import serializers
