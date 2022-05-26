@@ -8,104 +8,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-20 13:17+0200\n"
-"PO-Revision-Date: 2022-05-20 13:15+0124\n"
+"POT-Creation-Date: 2022-05-26 09:54+0200\n"
+"PO-Revision-Date: 2022-05-26 09:56+0124\n"
 "Last-Translator:   <pszczepanski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: backend/accounts/models.py:15
-msgid "Name of team"
-msgstr "Nazwa zespołu"
+#: backend/accounts/models.py:15 backend/accounts/resources.py:43
+msgid "Name of company"
+msgstr "Nazwa firmy"
 
-#: backend/accounts/models.py:19
-msgid "Logo of student team"
-msgstr "Logo zespołu studentów"
+#: backend/accounts/models.py:20
+msgid "Logo of company"
+msgstr "Logo firmy"
 
-#: backend/accounts/models.py:22 backend/accounts/models.py:43
+#: backend/accounts/models.py:23 backend/accounts/models.py:51
 #: backend/chat/models.py:17 backend/chat/models.py:43
 msgid "Creation time"
 msgstr "Czas utworzenia"
 
-#: backend/accounts/models.py:28
-msgid "Students team"
-msgstr "Zespół studentów"
-
-#: backend/accounts/models.py:29
-msgid "Students teams"
-msgstr "Zespoły studentów"
-
-#: backend/accounts/models.py:36
-msgid "Name of company"
-msgstr "Nazwa firmy"
-
-#: backend/accounts/models.py:40
-msgid "Logo of company"
-msgstr "Logo firmy"
-
-#: backend/accounts/models.py:49 backend/accounts/models.py:62
-#: backend/accounts/models.py:91
+#: backend/accounts/models.py:29 backend/accounts/models.py:70
+#: backend/accounts/models.py:99
 msgid "Company"
 msgstr "Firma"
 
-#: backend/accounts/models.py:50
+#: backend/accounts/models.py:30
 msgid "Companies"
 msgstr "Firmy"
 
-#: backend/accounts/models.py:63
+#: backend/accounts/models.py:39
+msgid "Company that team belongs to"
+msgstr "Firma do której zespół należy"
+
+#: backend/accounts/models.py:43 backend/accounts/resources.py:20
+msgid "Name of team"
+msgstr "Nazwa zespołu"
+
+#: backend/accounts/models.py:48
+msgid "Logo of student team"
+msgstr "Logo zespołu studentów"
+
+#: backend/accounts/models.py:57
+msgid "Students team"
+msgstr "Zespół studentów"
+
+#: backend/accounts/models.py:58
+msgid "Students teams"
+msgstr "Zespoły studentów"
+
+#: backend/accounts/models.py:71
 msgid "Leader"
 msgstr "Przewodniczący"
 
-#: backend/accounts/models.py:64
+#: backend/accounts/models.py:72
 msgid "Student leader"
 msgstr "Szef zespołu"
 
-#: backend/accounts/models.py:65
+#: backend/accounts/models.py:73
 msgid "Student"
 msgstr "Student"
 
-#: backend/accounts/models.py:69
+#: backend/accounts/models.py:77 backend/accounts/resources.py:74
 msgid "Email address"
 msgstr "Adres email"
 
-#: backend/accounts/models.py:72
+#: backend/accounts/models.py:80
 msgid "A user with that email already exists."
 msgstr "Użytkownik z podanym adresem email już istnieje!"
 
-#: backend/accounts/models.py:75
+#: backend/accounts/models.py:83 backend/accounts/resources.py:82
 msgid "Account type"
 msgstr "Typ konta"
 
-#: backend/accounts/models.py:84
+#: backend/accounts/models.py:92
 msgid "Team assigned to student"
 msgstr "Zespół przypisany do studenta"
 
-#: backend/accounts/models.py:93
+#: backend/accounts/models.py:101
 msgid "Index student number"
 msgstr "Numer indeksu studenta"
 
-#: backend/accounts/models.py:95
+#: backend/accounts/models.py:103
 msgid "Students amount for project"
 msgstr "Liczba studentów dla projektu"
 
-#: backend/accounts/models.py:103
+#: backend/accounts/models.py:111
 msgid "Registration notes"
 msgstr "Uwagi odnośnie rejestracji"
 
-#: backend/accounts/models.py:105
+#: backend/accounts/models.py:113
 msgid "Average from studies grades"
 msgstr "Średnia z ocen ze studiów"
 
-#: backend/accounts/models.py:122
+#: backend/accounts/models.py:130
 msgid "No more than one leader can exist in the team!"
 msgstr "Nie może istnieć więcej niż jeden szef zespołu studentów!"
+
+#: backend/accounts/resources.py:24 backend/accounts/resources.py:47
+#| msgid "Creation time"
+msgid "Created at"
+msgstr "Czas utworzenia"
+
+#: backend/accounts/resources.py:66
+msgid "First name"
+msgstr "Imię"
+
+#: backend/accounts/resources.py:70
+msgid "Last name"
+msgstr "Nazwisko"
+
+#: backend/accounts/resources.py:78
+msgid "Username"
+msgstr "Nazwa użytkownika"
+
+#: backend/accounts/resources.py:86
+#| msgid "Index student number"
+msgid "Index number"
+msgstr "Numer indeksu"
 
 #: backend/chat/models.py:14
 msgid "Name of conversation"
@@ -140,15 +164,15 @@ msgstr "Wiadomość"
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: backend/project/settings.py:171
+#: backend/project/settings.py:172
 msgid "Polish"
 msgstr "Polski"
 
-#: backend/project/settings.py:172
+#: backend/project/settings.py:173
 msgid "English"
 msgstr "Angielski"
 
-#: backend/project/settings.py:180
+#: backend/project/settings.py:181
 msgid "Polski"
 msgstr "Polski"
 
@@ -157,31 +181,32 @@ msgstr "Polski"
 msgid "Only one object of {0} can be created"
 msgstr "Tylko jeden obiekt typu {0} może być utworzony!"
 
-#: backend/settings/models.py:11
-#, fuzzy
+#: backend/settings/models.py:14
 #| msgid "Name of team"
 msgid "Name of project"
-msgstr "Nazwa zespołu"
+msgstr "Nazwa projektu"
 
-#: backend/settings/models.py:12
-#, fuzzy
+#: backend/settings/models.py:15
 #| msgid "Logo of company"
 msgid "Logo of project"
-msgstr "Logo firmy"
+msgstr "Logo projektu"
 
-#: backend/settings/models.py:14
+#: backend/settings/models.py:17
 msgid "Phone number for contact"
 msgstr "Numer telefonu do kontaktu"
 
-#: backend/settings/models.py:20
-#, fuzzy
+#: backend/settings/models.py:23
 #| msgid "Registration notes"
 msgid "Registration end time"
-msgstr "Uwagi odnośnie rejestracji"
+msgstr "Termin końcowy rejestracji"
 
-#: backend/settings/models.py:31
+#: backend/settings/models.py:34
 msgid "Settings"
 msgstr "Ustawienia"
+
+#: backend/templates/emails/summary.html:4 backend/templates/summary.html:4
+msgid "PDF Template"
+msgstr "Szablon PDF"
 
 #: backend/templates/errors/404.html:4
 msgid "Error 404"
@@ -198,7 +223,3 @@ msgstr "Błąd 500"
 #: backend/templates/errors/500.html:19
 msgid "Error 500 - contact the administration."
 msgstr "Błąd 500 - skontaktuj się z administracją."
-
-#: backend/templates/pdf_template.html:4
-msgid "PDF Template"
-msgstr "Szablon PDF"
