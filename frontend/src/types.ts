@@ -4,13 +4,15 @@ import { string } from "yup";
 
 export type ErrorMessage = string | null;
 
-type UserType = "Admin" | "User" | "Company" | null;
+type UserType = "Admin" | "Student" | "Student leader" | "Company" | null;
 
 export interface User {
   name: string | null;
+  lastName?: string | null;
   email: string | null;
   password: string | null;
   userType: UserType;
+  userName: string;
   loggedIn?: boolean;
 }
 
@@ -24,7 +26,6 @@ export interface Student {
   name: string;
   surname: string;
   email: string;
-  active: boolean;
   company: string;
 }
 
