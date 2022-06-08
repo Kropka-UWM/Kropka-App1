@@ -57,9 +57,9 @@ npm run serve
   * /get_account_info/
   * /password/change/
 * Reszta:
-  * /group-students/
-  * /list-students/
-  * /list-companies/
+  * /group_students/
+  * /list_students/
+  * /list_companies/
   * /get_conversations/
   * /get_messages/
   * /get_messages/<conversation_id>/
