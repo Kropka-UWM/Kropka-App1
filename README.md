@@ -40,7 +40,7 @@ a następnie zmodyfikować jego zawartość tak aby ten plik zawierał konfigura
 
 Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na stronie django.
 
-Uruchomienie frontu
+Uruchomienie frontu:
 
 ```
 cd frontend
@@ -57,6 +57,9 @@ npm run serve
   * /get_account_info/
   * /password/change/
 * Reszta:
+  * /group-students/
+  * /list-students/
+  * /list-companies/
   * /get_conversations/
   * /get_messages/
   * /get_messages/<conversation_id>/

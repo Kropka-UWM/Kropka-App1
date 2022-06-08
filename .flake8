@@ -4,4 +4,5 @@ exclude =   migrations,
             settings_local_pipelines.py,
             celery_local.py,
             settings_local.py
-            manage.py
+            manage.py,
+            frontend

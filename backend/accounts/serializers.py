@@ -1,4 +1,7 @@
 """Serializers file."""
+# Standard Library
+from collections import OrderedDict
+
 # Django
 from django.contrib.auth import get_user_model
 
@@ -6,7 +9,9 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 # Local
+from .models import Company
 from .models import CustomUser
+from .models import StudentTeam
 
 UserModel = get_user_model()
 
@@ -16,6 +21,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     account_type = serializers.ChoiceField(choices=CustomUser.ACCOUNT_TYPE)
     password = serializers.CharField(write_only=True)
+    company = serializers.SerializerMethodField()
+
+    @staticmethod
+    def get_company(obj):  # noqa: D102
+        if obj.company:
+            return f'{obj.company.name}'
 
     def create(self, validated_data):  # noqa: D102
         user = UserModel.objects.create_user(
@@ -42,6 +53,71 @@ class UserSerializer(serializers.ModelSerializer):
             'account_type',
             'average',
             'account_notes',
+            'company',
+        ]
+
+
+class ClassicUserSerializer(serializers.ModelSerializer):
+    """Grouped user serializer."""
+
+    class Meta:  # noqa: D106
+        model = UserModel
+        fields = [
+            'id',
+            'email',
+            'first_name',
+            'last_name',
+            'username',
+            'average',
+        ]
+
+
+class CompanySerializer(serializers.ModelSerializer):
+    """Company serializer."""
+
+    def to_representation(self, instance):
+        """Override serializer data generation."""
+        data = super().to_representation(instance)
+        students = UserSerializer(instance.customuser_set.all(), many=True)
+        return OrderedDict([(data['name'], students.data)])
+
+    class Meta:  # noqa: D106
+        model = Company
+        fields = [
+            'name',
+        ]
+
+
+class GroupedCompanySerializer(serializers.ModelSerializer):
+    """Grouped company serializer."""
+
+    def to_representation(self, instance):
+        """Override serializer data generation."""
+        data = super().to_representation(instance)
+        students = ClassicUserSerializer(
+            instance.customuser_set.all(), many=True)
+        return OrderedDict([(data['name'], students.data)])
+
+    class Meta:  # noqa: D106
+        model = Company
+        fields = [
+            'name',
+        ]
+
+
+class StudentTeamSerializer(serializers.ModelSerializer):
+    """Student team serializer."""
+
+    def to_representation(self, instance):
+        """Override serializer data generation."""
+        data = super().to_representation(instance)
+        users = UserSerializer(instance.customuser_set.all(), many=True)
+        return OrderedDict([(data['name'], users.data)])
+
+    class Meta:  # noqa: D106
+        model = StudentTeam
+        fields = [
+            'name',
         ]
 
 
