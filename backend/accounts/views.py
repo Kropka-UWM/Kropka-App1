@@ -2,17 +2,20 @@
 
 # Standard Library
 import io
+from collections import OrderedDict
 
 # Django
 from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
 from django.db.models import Prefetch
 from django.http import FileResponse
+from django.http import Http404
 from django.template.loader import render_to_string
 
 # 3rd-party
 from rest_framework import permissions
 from rest_framework.generics import CreateAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
@@ -22,9 +25,14 @@ from weasyprint import HTML
 # Local
 from .models import Company
 from .models import StudentTeam
+from .serializers import ClassicUserSerializer
+from .serializers import GroupedCompanySerializer
 from .serializers import JustEmailSerializer
+from .serializers import StudentTeamSerializer
 from .serializers import UserSerializer
 from .utils import send_email_to
+
+UserModel = get_user_model()
 
 
 class CreateUserView(CreateAPIView):
@@ -40,10 +48,61 @@ class GetAccountInfo(RetrieveAPIView):
 
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
-    queryset = get_user_model().objects.all()
+    queryset = UserModel.objects.all()
 
     def get_object(self):  # noqa: D102
         return self.request.user
+
+
+class GroupStudentsView(ListAPIView):
+    """Group students view."""
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = GroupedCompanySerializer
+    queryset = Company.objects.prefetch_related('customuser_set')
+
+    def list(self, request, *args, **kwargs):  # noqa: D102
+        response = super().list(request, *args, **kwargs)
+        unsetted_qs = UserModel.objects.filter(company=None)
+        get_data = response.data[0]
+        get_data['unsetted'] = ClassicUserSerializer(
+            unsetted_qs, many=True).data
+        return Response(get_data)
+
+
+class ListStudentsView(ListAPIView):
+    """Retrieve students view."""
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ClassicUserSerializer
+    queryset = UserModel.objects.all()
+
+    def get_queryset(self):  # noqa: D102
+        qs = super().get_queryset()
+        if not self.request.user.team:
+            raise Http404
+        return qs.filter(team=self.request.user.team)
+
+
+class ListCompanyView(ListAPIView):
+    """List company view."""
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = StudentTeamSerializer
+    queryset = StudentTeam.objects.prefetch_related('customuser_set')
+
+    def get_queryset(self):  # noqa: D102
+        qs = super().get_queryset()
+        if not self.request.user.company:
+            raise Http404
+        return qs.filter(company=self.request.user.company)
+
+    def list(self, request, *args, **kwargs):  # noqa: D102
+        response = super().list(request, *args, **kwargs)
+        data_dict = OrderedDict()
+        for response_dict in response.data:
+            data_dict.update(response_dict)
+        return Response(data_dict)
 
 
 class PDFSummaryView(APIView):
