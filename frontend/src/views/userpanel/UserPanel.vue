@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import SideBar from "@/components/userpanel/Sidebar.vue";
 import Table from "@/components/Table.vue";
-import { onMounted, ref } from "vue";
-import { UsersApi } from "@/services/UserDataService";
-import { Student, ResponseData } from "@/types";
-import { IUser } from "@/services/UserDataService";
+import { Student, ResponseData } from "../../types";
+import { computed } from "vue";
 
 const incomingHeaders: Array<string> = [
   "id",
   "name",
   "surname",
   "email",
-  "active",
   "company",
 ];
 
@@ -39,6 +36,14 @@ const IncomingData: Student[] = [
   },
 ];
 
+const rawData = computed(() => {
+  return JSON.parse(JSON.stringify(IncomingData));
+});
+
+const rawData2 = computed(() => {
+  return JSON.parse(JSON.stringify(incomingHeaders));
+});
+
 // // Ref way
 // let users = ref<Array<IUser>>([]);
 
@@ -51,24 +56,18 @@ const IncomingData: Student[] = [
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="text-start">Company</h1>
-        <h2 class="text-start">Group1</h2>
-        <Table
-          :incomingHeaders="incomingHeaders"
-          :IncomingData="IncomingData"
-        ></Table>
-        <h2 class="text-start">Group2</h2>
-        <Table
-          :incomingHeaders="incomingHeaders"
-          :IncomingData="IncomingData"
-        ></Table>
-        <h2 class="text-start">Group3</h2>
+        <h1 class="text-start">User</h1>
+        <h2 class="text-start">Twoja grupa</h2>
         <Table
           :incomingHeaders="incomingHeaders"
           :IncomingData="IncomingData"
         ></Table>
       </div>
     </div>
+    headery dla tabeli:
+    <p v-if="rawData">{{ rawData2 }}</p>
+    tabela:
+    <p v-if="rawData">{{ rawData }}</p>
   </div>
 </template>
 
