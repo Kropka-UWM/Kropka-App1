@@ -41,6 +41,11 @@ function login() {
       password: password.value,
     })
     .then(() => {
+      store.commit("ADD_TOAST", {
+        text: "Zalogowano pomyślnie!",
+        toastClass: "bg-success",
+        textClass: "text-white",
+      });
       router.push({ name: "Panel" });
     })
     .catch((err) => {
@@ -97,5 +102,9 @@ function login() {
     </form>
 
     <p v-if="error">{{ error }}</p>
+
+    <router-link class="navbar-brand" to="/register"
+      >Zarejestruj się</router-link
+    >
   </div>
 </template>

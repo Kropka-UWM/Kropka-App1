@@ -12,6 +12,9 @@ Backend powinien być obsługiwany od pythona 3.6 w górę (zalecana najbardziej
 
 Dodatkowo wymaga obsługę ASGI do funkcjonalności chatu.
 
+# Czego wymaga frontend?
+Wystarczy zainstalować aktualną, stabilną wersje node.js - na tą chwile 16.15.1
+
 # Jak stworzyć konto superuser, czyli administratora w django?
 Konto superusera tworzymy za pomocą komendy `python manage.py createsuperuser`, 
 a następnie wypełniamy informacje w interaktywnym kreatorze w konsoli/terminalu.
@@ -36,6 +39,14 @@ Domyślnie jest tworzona baza danych "plikowa" (sqlite3) ale możemy skopiować 
 a następnie zmodyfikować jego zawartość tak aby ten plik zawierał konfigurację np. do połączenia z MySQL albo PostgreSQL.
 
 Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na stronie django.
+
+Uruchomienie frontu
+
+```
+cd frontend
+npm install
+npm run serve
+```
 
 # Endpointy [backend]:
 * **Autentykacja**:
