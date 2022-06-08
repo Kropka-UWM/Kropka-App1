@@ -32,51 +32,45 @@ function changeMode() {
     </a>
     <hr />
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi me-2" width="16" height="16">
-            <use
-              xlink:href="@/assets/icons/bootstrap-icons.svg#bootstrap"
-            ></use>
-          </svg>
-          Home
-        </a>
-      </li>
       <li>
-        <a href="#" class="nav-link link-dark">
+        <router-link class="navbar-brand" to="/panel/groupusers">
           <svg class="bi me-2" width="16" height="16">
             <use
               xlink:href="@/assets/icons/bootstrap-icons.svg#speedometer2"
             ></use>
           </svg>
-          Dashboard
-        </a>
+          Group users</router-link
+        >
       </li>
       <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16">
-            <use xlink:href="@/assets/icons/bootstrap-icons.svg#table"></use>
-          </svg>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16">
-            <use xlink:href="@/assets/icons/bootstrap-icons.svg#grid"></use>
-          </svg>
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
+        <router-link class="navbar-brand" to="/panel/userpanel">
           <svg class="bi me-2" width="16" height="16">
             <use
-              xlink:href="@/assets/icons/bootstrap-icons.svg#people-circle"
+              xlink:href="@/assets/icons/bootstrap-icons.svg#speedometer2"
             ></use>
           </svg>
-          Customers
-        </a>
+          User panel</router-link
+        >
+      </li>
+      <li>
+        <router-link class="navbar-brand" to="/panel/companypanel">
+          <svg class="bi me-2" width="16" height="16">
+            <use
+              xlink:href="@/assets/icons/bootstrap-icons.svg#speedometer2"
+            ></use>
+          </svg>
+          Company panel</router-link
+        >
+      </li>
+      <li>
+        <router-link class="navbar-brand" to="/panel/waitingphase">
+          <svg class="bi me-2" width="16" height="16">
+            <use
+              xlink:href="@/assets/icons/bootstrap-icons.svg#speedometer2"
+            ></use>
+          </svg>
+          Waiting phase</router-link
+        >
       </li>
     </ul>
     <div class="form-check form-switch">
