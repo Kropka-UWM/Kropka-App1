@@ -21,8 +21,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements_dev.txt
+        pip --disable-pip-version-check --no-compile install -r requirements_dev.txt
         pip install hyperframe==6.0.1
         pip install h2==4.1.0
     - name: Run Flake8
