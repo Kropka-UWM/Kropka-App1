@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 
 # 3rd-party
 from rest_framework import serializers
+from rest_framework.relations import PrimaryKeyRelatedField
 
 # Local
 from .models import Company
@@ -119,6 +120,21 @@ class StudentTeamSerializer(serializers.ModelSerializer):
         fields = [
             'name',
         ]
+
+
+class AssignStudentSerializer(serializers.Serializer):
+    """Assign student serializer."""
+
+    student = PrimaryKeyRelatedField(
+        queryset=UserModel.objects.filter(account_type=CustomUser.STUDENT))
+    company = PrimaryKeyRelatedField(
+        queryset=Company.objects.all())
+
+    def create(self, validated_data):  # noqa: D102
+        pass
+
+    def update(self, instance, validated_data):  # noqa: D102
+        pass
 
 
 class JustEmailSerializer(serializers.Serializer):
