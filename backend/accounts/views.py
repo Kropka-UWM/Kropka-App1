@@ -64,7 +64,10 @@ class GroupStudentsView(ListAPIView):
     def list(self, request, *args, **kwargs):  # noqa: D102
         response = super().list(request, *args, **kwargs)
         unsetted_qs = UserModel.objects.filter(company=None)
-        get_data = response.data[0]
+        get_data = OrderedDict()
+        for response_dict in response.data:
+            if list(response_dict.items())[0][1]:
+                get_data.update(response_dict)
         get_data['unsetted'] = ClassicUserSerializer(
             unsetted_qs, many=True).data
         return Response(get_data)
