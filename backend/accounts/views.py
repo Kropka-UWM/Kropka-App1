@@ -25,6 +25,7 @@ from weasyprint import HTML
 # Local
 from .models import Company
 from .models import StudentTeam
+from .serializers import AssignStudentSerializer
 from .serializers import ClassicUserSerializer
 from .serializers import GroupedCompanySerializer
 from .serializers import JustEmailSerializer
@@ -71,6 +72,28 @@ class GroupStudentsView(ListAPIView):
         get_data['unsetted'] = ClassicUserSerializer(
             unsetted_qs, many=True).data
         return Response(get_data)
+
+
+class AssignStudentView(APIView):
+    """Assign student view."""
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AssignStudentSerializer
+
+    def post(self, request, format=None):  # noqa: D102
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            student = data['student']
+            student.company = data['company']
+            student.save()
+            serialized_user = UserSerializer(
+                UserModel.objects.filter(id=student.id), many=True)
+            return Response(serialized_user.data[0])
+        return Response(
+            serializer.errors,
+            status=HTTP_400_BAD_REQUEST,
+        )
 
 
 class ListStudentsView(ListAPIView):
