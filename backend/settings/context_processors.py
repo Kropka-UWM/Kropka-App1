@@ -1,9 +1,10 @@
 """Context processor file."""
+# Project
 from backend.settings.models import SettingsModel
 
 
 def settings_processor(request):
-    """Settings processor."""
+    """Return processed settings."""
     return {
         'settings': SettingsModel.objects.get_or_create(),
     }
