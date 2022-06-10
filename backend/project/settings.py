@@ -258,3 +258,10 @@ try:
     from backend.project.settings_local import *  # noqa: F403, F401
 except ImportError:
     pass
+
+# Needs to be after
+try:
+    # Project
+    from backend.project.settings_sentry import *  # noqa: F403, F401
+except ImportError:
+    pass
