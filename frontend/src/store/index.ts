@@ -45,11 +45,17 @@ export const store = createStore<State>({
   },
   actions: {
     async register({ commit }, credentials) {
-      const { data } = await axios.post("http://vps-9ee2e9ea.vps.ovh.net:8000/login/", credentials);
+      const { data } = await axios.post(
+        "http://vps-9ee2e9ea.vps.ovh.net:8000/register/",
+        credentials
+      );
       commit("SET_USER_DATA", data);
     },
     async login({ commit }, credentials) {
-      const { data } = await axios.post("http://vps-9ee2e9ea.vps.ovh.net:8000/login/", credentials);
+      const { data } = await axios.post(
+        "http://vps-9ee2e9ea.vps.ovh.net:8000/login/",
+        credentials
+      );
       commit("SET_USER_DATA", data);
     },
     logout({ commit }) {

@@ -21,6 +21,8 @@ const user: User = reactive({
   userType: "Student",
 });
 
+const password2 = "";
+
 function register() {
   store
     .dispatch("register", {
@@ -28,7 +30,8 @@ function register() {
       last_name: user.lastName,
       email: user.email,
       username: user.userName,
-      password: user.password,
+      password1: user.password,
+      password2: password2,
       account_type: user.userType,
     })
     .then(() => {
@@ -67,6 +70,9 @@ function register() {
 
       <label for="password"> Password: </label>
       <input v-model="user.password" type="password" name="password" value />
+
+      <label for="password"> Password: </label>
+      <input v-model="password2" type="password" name="password2" value />
 
       <label for="userType">User type:</label>
 

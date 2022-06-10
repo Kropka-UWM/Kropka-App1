@@ -102,7 +102,7 @@ const rawData2 = computed(() => {
 let users = ref<Array<IUser>>([]);
 
 onMounted(async () => {
-  users.value = await UsersApi.getAllUsers();
+  users.value = await UsersApi.getAllUsers(store.state.userToken);
 });
 </script>
 
