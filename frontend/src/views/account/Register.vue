@@ -21,7 +21,7 @@ const user: User = reactive({
   userType: "Student",
 });
 
-const password2 = "";
+const password2 = ref("");
 
 function register() {
   store
@@ -31,7 +31,7 @@ function register() {
       email: user.email,
       username: user.userName,
       password1: user.password,
-      password2: password2,
+      password2: password2.value,
       account_type: user.userType,
     })
     .then(() => {
@@ -40,8 +40,7 @@ function register() {
         toastClass: "bg-success",
         textClass: "text-white",
       });
-      console.log("xD");
-      router.push({ name: "login" });
+      router.push({ name: "panel" });
     })
     .catch((err) => {
       store.commit("ADD_TOAST", {
@@ -70,8 +69,8 @@ function register() {
 
       <label for="password"> Password: </label>
       <input v-model="user.password" type="password" name="password" value />
-
-      <label for="password"> Password: </label>
+      {{password2}}
+      <label for="password2"> Password2: </label>
       <input v-model="password2" type="password" name="password2" value />
 
       <label for="userType">User type:</label>
