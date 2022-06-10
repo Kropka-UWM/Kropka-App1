@@ -26,17 +26,14 @@ class UserSerializer(serializers.ModelSerializer, RegisterSerializer):
     password2 = serializers.CharField(write_only=True)
     # company = serializers.SerializerMethodField()
 
-    def create(self, validated_data):  # noqa: D102
-        user = UserModel.objects.create_user(
-            email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            username=validated_data['username'],
-            password=validated_data['password'],
-            account_type=validated_data['account_type'],
-            # average=validated_data['average'],
-            # account_notes=validated_data['account_notes'],
-        )
+    @staticmethod
+    def modify_user(user, validated_data):  # noqa: D102
+        user.account_type = validated_data['account_type']
+        user.save()
+
+    def save(self, request):  # noqa: D102
+        user = super().save(request)
+        self.modify_user(user, self.validated_data)
         return user
 
     class Meta:  # noqa: D106
