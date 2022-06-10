@@ -6,6 +6,7 @@ from collections import OrderedDict
 from django.contrib.auth import get_user_model
 
 # 3rd-party
+from dj_rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
 
 # Local
@@ -16,17 +17,13 @@ from .models import StudentTeam
 UserModel = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer, RegisterSerializer):
     """User serializer."""
 
     account_type = serializers.ChoiceField(choices=CustomUser.ACCOUNT_TYPE)
-    password = serializers.CharField(write_only=True)
-    company = serializers.SerializerMethodField()
-
-    @staticmethod
-    def get_company(obj):  # noqa: D102
-        if obj.company:
-            return f'{obj.company.name}'
+    password1 = serializers.CharField(write_only=True)
+    password2 = serializers.CharField(write_only=True)
+    # company = serializers.SerializerMethodField()
 
     def create(self, validated_data):  # noqa: D102
         user = UserModel.objects.create_user(
@@ -49,11 +46,12 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'username',
-            'password',
+            'password1',
+            'password2',
             'account_type',
             # 'average',
             # 'account_notes',
-            'company',
+            # 'company',
         ]
 
 
