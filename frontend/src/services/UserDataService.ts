@@ -30,7 +30,7 @@ export abstract class UsersApi {
     const url = "http://vps-9ee2e9ea.vps.ovh.net:8000/list_students/";
     const response = await this.usersAxios.get<RequestInterface>(url, {
       headers: {
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data.data;
