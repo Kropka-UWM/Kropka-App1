@@ -17,6 +17,9 @@ from pathlib import Path
 # Django
 from django.utils.translation import gettext_lazy as _
 
+# 3rd-party
+from corsheaders.defaults import default_headers
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,6 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = default_headers + ('cache-control',)
 
 # Application definition
 
