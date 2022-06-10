@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 09:54+0200\n"
-"PO-Revision-Date: 2022-05-26 09:56+0124\n"
+"POT-Creation-Date: 2022-06-10 10:27+0200\n"
+"PO-Revision-Date: 2022-06-10 10:29+0124\n"
 "Last-Translator:   <pszczepanski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -110,7 +110,6 @@ msgid "No more than one leader can exist in the team!"
 msgstr "Nie może istnieć więcej niż jeden szef zespołu studentów!"
 
 #: backend/accounts/resources.py:24 backend/accounts/resources.py:47
-#| msgid "Creation time"
 msgid "Created at"
 msgstr "Czas utworzenia"
 
@@ -127,7 +126,6 @@ msgid "Username"
 msgstr "Nazwa użytkownika"
 
 #: backend/accounts/resources.py:86
-#| msgid "Index student number"
 msgid "Index number"
 msgstr "Numer indeksu"
 
@@ -164,15 +162,15 @@ msgstr "Wiadomość"
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: backend/project/settings.py:172
+#: backend/project/settings.py:184
 msgid "Polish"
 msgstr "Polski"
 
-#: backend/project/settings.py:173
+#: backend/project/settings.py:185
 msgid "English"
 msgstr "Angielski"
 
-#: backend/project/settings.py:181
+#: backend/project/settings.py:193
 msgid "Polski"
 msgstr "Polski"
 
@@ -182,27 +180,75 @@ msgid "Only one object of {0} can be created"
 msgstr "Tylko jeden obiekt typu {0} może być utworzony!"
 
 #: backend/settings/models.py:14
-#| msgid "Name of team"
 msgid "Name of project"
 msgstr "Nazwa projektu"
 
 #: backend/settings/models.py:15
-#| msgid "Logo of company"
 msgid "Logo of project"
 msgstr "Logo projektu"
 
 #: backend/settings/models.py:17
+#| msgid "Email address"
+msgid "Email address for contact"
+msgstr "Adres email do kontaktu"
+
+#: backend/settings/models.py:24
 msgid "Phone number for contact"
 msgstr "Numer telefonu do kontaktu"
 
-#: backend/settings/models.py:23
-#| msgid "Registration notes"
+#: backend/settings/models.py:31
 msgid "Registration end time"
 msgstr "Termin końcowy rejestracji"
 
-#: backend/settings/models.py:34
+#: backend/settings/models.py:42
 msgid "Settings"
 msgstr "Ustawienia"
+
+#: backend/templates/account/email/email_confirmation_message.html:21
+msgid ""
+"\n"
+"        Email address has been confirmed.\n"
+"      "
+msgstr ""
+"\n"
+"Adres email został potwierdzony."
+
+#: backend/templates/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because user %(user_display)s has given yours as an e-mail address to connect their account.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+
+#: backend/templates/account/email/email_confirmation_message.txt:7
+#, python-format
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Dziękujemy - zespół %(site_name)s!\n"
+"%(site_domain)s"
+
+#: backend/templates/account/email/email_confirmation_signup_message.html:21
+#, python-format
+msgid ""
+"\n"
+"        You're receiving this e-mail because user %(user_display)s has given yours as an e-mail address to connect their account.\n"
+"\n"
+"        To confirm this is correct, go to %(activate_url)s\n"
+"      "
+msgstr ""
+
+#: backend/templates/account/email/email_confirmation_signup_subject.txt:3
+msgid "Please confirm your email address"
+msgstr "Potwierdź swój adres email"
+
+#: backend/templates/account/email/password_reset_key_subject.txt:3
+msgid "Password reset email"
+msgstr "Resetowanie hasła"
 
 #: backend/templates/emails/summary.html:4 backend/templates/summary.html:4
 msgid "PDF Template"
