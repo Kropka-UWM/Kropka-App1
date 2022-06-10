@@ -6,7 +6,7 @@ from django.conf import settings
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-if getattr(settings, 'DEBUG', False) or getattr(settings, 'ENABLE_SENTRY', False):
+if not getattr(settings, 'DEBUG', True) or getattr(settings, 'ENABLE_SENTRY', False):
     sentry_sdk.init(
         dsn='https://2885af6e3adc4cf1a95e4b3a10e36119@o1282924.ingest.sentry.io/6491964',
         integrations=[DjangoIntegration()],
