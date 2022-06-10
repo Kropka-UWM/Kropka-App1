@@ -6,7 +6,8 @@ psycopg2-binary==2.9.3
 django-rosetta==0.9.8
 weasyprint==55.0
 requests==2.27.1
-dj-rest-auth[with_social]==2.2.4
+dj-rest-auth==2.2.4
+django-allauth==0.51.0
 channels==3.0.4
 channels-redis==3.4.0
 django-push-notifications[WP,APNS]==3.0.0
