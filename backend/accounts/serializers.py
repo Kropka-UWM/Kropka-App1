@@ -36,8 +36,8 @@ class UserSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             password=validated_data['password'],
             account_type=validated_data['account_type'],
-            average=validated_data['average'],
-            account_notes=validated_data['account_notes'],
+            # average=validated_data['average'],
+            # account_notes=validated_data['account_notes'],
         )
         return user
 
@@ -51,8 +51,8 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'password',
             'account_type',
-            'average',
-            'account_notes',
+            # 'average',
+            # 'account_notes',
             'company',
         ]
 
