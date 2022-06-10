@@ -106,6 +106,8 @@ class ListStudentsView(ListAPIView):
 
     def get_queryset(self):  # noqa: D102
         qs = super().get_queryset()
+        if self.request.user.is_superuser:
+            return qs
         if not self.request.user.team:
             raise Http404
         return qs.filter(team=self.request.user.team)
