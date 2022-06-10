@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-10 10:27+0200\n"
-"PO-Revision-Date: 2022-06-10 10:29+0124\n"
+"POT-Creation-Date: 2022-06-10 11:38+0200\n"
+"PO-Revision-Date: 2022-06-10 11:45+0124\n"
 "Last-Translator:   <pszczepanski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -188,7 +188,6 @@ msgid "Logo of project"
 msgstr "Logo projektu"
 
 #: backend/settings/models.py:17
-#| msgid "Email address"
 msgid "Email address for contact"
 msgstr "Adres email do kontaktu"
 
@@ -214,16 +213,28 @@ msgstr ""
 "Adres email został potwierdzony."
 
 #: backend/templates/account/email/email_confirmation_message.txt:1
+#: backend/templates/account/email/password_reset_key_message.txt:1
+#, python-format
+#| msgid ""
+#| "Thank you from %(site_name)s!\n"
+#| "%(site_domain)s"
+msgid "Hello from %(site_name)s!"
+msgstr "Witaj z %(site_name)s!"
+
+#: backend/templates/account/email/email_confirmation_message.txt:3
 #, python-format
 msgid ""
-"Hello from %(site_name)s!\n"
 "\n"
-"You're receiving this e-mail because user %(user_display)s has given yours as an e-mail address to connect their account.\n"
+"You're receiving this e-mail because probably you gave yours e-mail address to connect your account.\n"
 "\n"
 "To confirm this is correct, go to %(activate_url)s\n"
 msgstr ""
+"\n"
+"Dostajesz ten e-mail ponieważ prawdopodobnie ty podałeś swój adres mailowy by połączyć go ze swoim kontem.\n"
+"\n"
+"Aby potwierdzić, przejdź do %(activate_url)s\n"
 
-#: backend/templates/account/email/email_confirmation_message.txt:7
+#: backend/templates/account/email/email_confirmation_message.txt:8
 #, python-format
 msgid ""
 "Thank you from %(site_name)s!\n"
@@ -236,19 +247,88 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        You're receiving this e-mail because user %(user_display)s has given yours as an e-mail address to connect their account.\n"
+"        You're receiving this e-mail because probably you gave yours e-mail address to connect your account.\n"
 "\n"
 "        To confirm this is correct, go to %(activate_url)s\n"
 "      "
 msgstr ""
+"\n"
+"Dostajesz ten e-mail ponieważ prawdopodobnie ty podałeś swój adres mailowy by połączyć go ze swoim kontem.\n"
+"\n"
+"Aby potwierdzić, przejdź do %(activate_url)s"
 
 #: backend/templates/account/email/email_confirmation_signup_subject.txt:3
 msgid "Please confirm your email address"
 msgstr "Potwierdź swój adres email"
 
+#: backend/templates/account/email/password_reset_key_message.html:21
+msgid ""
+"\n"
+"        You're receiving this e-mail because you or someone else has requested a\n"
+"        password for your user account.\n"
+"        It can be safely ignored if you did not request a password reset. Click the\n"
+"        link below to reset your password.\n"
+"      "
+msgstr ""
+"\n"
+"Dostajesz tą wiadomość e-mail ponieważ ty lub ktoś inny wysłał prośbę o reset hasła twojego konta.\n"
+"Możesz zignorować tą wiadomość jeżeli to nie jest Twoja prośba. Kliknij w link aby zresetować hasło."
+
+#: backend/templates/account/email/password_reset_key_message.html:29
+msgid "Reset Password"
+msgstr "Resetowanie Hasła"
+
+#: backend/templates/account/email/password_reset_key_message.html:31
+msgid "In case you forgot, your username is"
+msgstr "W przypadku gdybyś zapomniał, twoja nazwa użytkownika to"
+
+#: backend/templates/account/email/password_reset_key_message.txt:3
+msgid ""
+"\n"
+"You're receiving this e-mail because you or someone else has requested a password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the link below to reset your password."
+msgstr ""
+"\n"
+"Dostajesz tą wiadomość e-mail ponieważ ty lub ktoś inny wysłał prośbę o reset hasła twojego konta.\n"
+"Możesz zignorować tą wiadomość jeżeli to nie jest Twoja prośba. Kliknij w link aby zresetować hasło."
+
+#: backend/templates/account/email/password_reset_key_message.txt:9
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr "W przypadku gdybyś zapomniał, twoja nazwa użytkownika to %(username)s"
+
+#: backend/templates/account/email/password_reset_key_message.txt:11
+#, python-format
+#| msgid ""
+#| "Thank you from %(site_name)s!\n"
+#| "%(site_domain)s"
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Dziękujemy za korzystanie z %(site_name)s!\n"
+"%(site_domain)s"
+
 #: backend/templates/account/email/password_reset_key_subject.txt:3
 msgid "Password reset email"
 msgstr "Resetowanie hasła"
+
+#: backend/templates/account/email_confirm.html:5
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"Link potwierdzający do adresu email wygasł lub jest nieprawidłowy. Proszę, kliknij w ten link aby wysłać nową prośbę o potwierdzenie konta:\n"
+"<a href=\"%(email_url)s\">Klik</a>"
+
+#: backend/templates/account/verify_sent.html:2
+msgid ""
+"\n"
+"Verification email has been sent.\n"
+msgstr ""
+"\n"
+"Email potwierdzający został wysłany.\n"
 
 #: backend/templates/emails/summary.html:4 backend/templates/summary.html:4
 msgid "PDF Template"
