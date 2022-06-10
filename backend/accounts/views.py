@@ -5,6 +5,7 @@ import io
 from collections import OrderedDict
 
 # Django
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
 from django.db.models import Prefetch
@@ -149,7 +150,11 @@ class PDFSummaryView(APIView):
             string=template,
             base_url=self.request.build_absolute_uri(),
         )
-        file_buffer = io.BytesIO(html.write_pdf())
+        file_buffer = io.BytesIO(html.write_pdf(
+            stylesheets=[
+                f'{settings.BASE_DIR}/static/css/bootstrap.min.css',
+            ],
+        ))
         return file_buffer
 
     def post(self, request, format=None):  # noqa: D102
