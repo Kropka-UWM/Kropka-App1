@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include
 from django.urls import path
+from django.urls import re_path
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +17,19 @@ urlpatterns = [
     path('', include('backend.chat.urls', namespace='messages')),
     path('', include('backend.notify.urls', namespace='notify')),
     path('', include('dj_rest_auth.urls')),
-    path('registration/', include('dj_rest_auth.registration.urls'))
+]
+
+
+# Additional views from dj-rest-auth:
+urlpatterns += [
+    re_path(
+        r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(),
+        name='account_confirm_email',
+    ),
+    path(
+        'account-email-verification-sent/', TemplateView.as_view(),
+        name='account_email_verification_sent',
+    ),
 ]
 
 
