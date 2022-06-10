@@ -2,8 +2,12 @@
 # Django
 from django.urls import path
 
+# 3rd-party
+from dj_rest_auth.registration.views import RegisterView
+from dj_rest_auth.registration.views import ResendEmailVerificationView
+from dj_rest_auth.registration.views import VerifyEmailView
+
 # Local
-from .views import CreateUserView
 from .views import GetAccountInfo
 from .views import GroupStudentsView
 from .views import ListCompanyView
@@ -13,7 +17,9 @@ from .views import PDFSummaryView
 app_name = 'accounts'
 
 urlpatterns = [
-    path('register/', CreateUserView.as_view(), name='rest_register'),
+    path('register/', RegisterView.as_view(), name='rest_register'),
+    path('verify-email/', VerifyEmailView.as_view(), name='rest_verify_email'),
+    path('resend-email/', ResendEmailVerificationView.as_view(), name='rest_resend_email'),
     path('group_students/', GroupStudentsView.as_view(), name='group_students'),
     path('list_students/', ListStudentsView.as_view(), name='list_students'),
     path('list_companies/', ListCompanyView.as_view(), name='list_companies'),
