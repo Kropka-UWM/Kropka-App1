@@ -13,9 +13,17 @@ class SettingsModel(SingleInstanceMixin, models.Model):
 
     project_name = models.CharField(_('Name of project'), max_length=255, default='Kropka-App1')
     project_logo = models.ImageField(_('Logo of project'), max_length=255, blank=True, null=True)
+    contact_email = models.CharField(
+        _('Email address for contact'),
+        default='zespolkropka@gmail.com',
+        max_length=255,
+        blank=True,
+        null=True,
+    )
     contact_phone = models.CharField(
         _('Phone number for contact'),
-        max_length=255,
+        default='696 969 696',
+        max_length=32,
         blank=True,
         null=True,
     )
