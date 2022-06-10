@@ -1,3 +1,4 @@
+{% load i18n base64 %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -117,7 +118,7 @@
                     "
                   >
                     <img
-                      src="banner.png"
+                      src="{% to_base64 'banner.png' %}"
                       style="
                         width: 100%;
                         height: auto;
@@ -178,28 +179,11 @@
                               line-height: 26px;
                             "
                           >
-                            Dzień dobry,
+                            Witaj,
                           </td>
                         </tr>
-                        <tr>
-                          <td
-                            align="left"
-                            style="
-                              width: 100%;
-                              color: #000000;
-                              font-family: 'Helvetica Neue', Helvetica, Arial,
-                                sans-serif;
-                              font-size: 17px;
-                              line-height: 20px;
-                              text-align: justify;
-                              font-weight: bold;
-                              padding-top: 10px;
-                              padding-bottom: 10px;
-                            "
-                          >
-                            Lorem ipsum
-                          </td>
-                        </tr>
+                        {% block content %}
+                        {% endblock %}
                       </tbody>
                     </table>
                   </td>
@@ -314,10 +298,10 @@
                         text-decoration: none !important;
                         text-decoration: none;
                       "
-                      >Zepsół kropka</span
+                      >Zespół kropka</span
                     ><br />
                     <br />
-                    Tel.: 696 969 696 <br />E-mail:
+                    Tel.: {{ settings.contact_phone }} <br />E-mail:
                     <a
                       href="mailto:"
                       target="_blank"
@@ -326,7 +310,7 @@
                         text-decoration: none !important;
                         text-decoration: none;
                       "
-                      >zespolkropka@gmail.com</a
+                      >{{ settings.contact_email }}</a
                     >
                   </td>
                 </tr>
