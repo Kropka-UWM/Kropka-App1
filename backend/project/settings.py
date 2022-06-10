@@ -240,6 +240,12 @@ PUSH_NOTIFICATIONS_SETTINGS = {
 
 try:
     # Project
+    from backend.project.settings_sentry import *  # noqa: F403, F401
+except ImportError:
+    pass
+
+try:
+    # Project
     from backend.project.settings_local import *  # noqa: F403, F401
 except ImportError:
     pass
