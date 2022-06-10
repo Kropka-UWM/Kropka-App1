@@ -9,6 +9,9 @@ from django.urls import path
 from django.urls import re_path
 from django.views.generic import TemplateView
 
+# 3rd-party
+from allauth.account.views import ConfirmEmailView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backend.settings.urls', namespace='settings')),
@@ -23,11 +26,14 @@ urlpatterns = [
 # Additional views from dj-rest-auth:
 urlpatterns += [
     re_path(
-        r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(),
+        r'^account-confirm-email/(?P<key>[-:\w]+)/$',
+        ConfirmEmailView.as_view(),
         name='account_confirm_email',
     ),
     path(
-        'account-email-verification-sent/', TemplateView.as_view(),
+        'account-email-verification-sent/',
+        TemplateView.as_view(
+            template_name='account/email/verify_sent.html'),
         name='account_email_verification_sent',
     ),
 ]

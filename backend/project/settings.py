@@ -218,6 +218,7 @@ REST_FRAMEWORK = {
 }
 
 REST_USE_JWT = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=60),
@@ -252,6 +253,8 @@ PUSH_NOTIFICATIONS_SETTINGS = {
     'FCM_API_KEY': FCM_API_KEY,
     'GCM_API_KEY': '',
 }
+
+LOGIN_REDIRECT_URL = '/'
 
 try:
     # Project
