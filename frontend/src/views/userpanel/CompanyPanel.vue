@@ -5,8 +5,8 @@ import { computed } from "vue";
 
 const incomingHeaders: Array<string> = [
   "id",
-  "name",
-  "surname",
+  "first_name",
+  "last_name",
   "email",
   "company",
 ];
@@ -15,22 +15,22 @@ const multipleTables = {
   group1: [
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
@@ -38,22 +38,22 @@ const multipleTables = {
   group2: [
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
@@ -61,22 +61,22 @@ const multipleTables = {
   group3: [
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },
     {
       id: "1",
-      name: "Name",
-      surname: "surname",
+      first_name: "Name",
+      last_name: "surname",
       email: "email@o2.com",
       company: "company",
     },

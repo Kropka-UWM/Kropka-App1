@@ -2,24 +2,24 @@
   "students":[
        {
     "id": "1",
-    "name": "Name",
-    "surname": "surname",
+    "first_name": "Name",
+    "last_name": "surname",
     "email": "email@o2.com",
     "active": "yes",
     "company": "company"
   },
   {
     "id": "1",
-    "name": "Name",
-    "surname": "surname",
+    "first_name": "Name",
+    "last_name": "surname",
     "email": "email@o2.com",
     "active": "yes",
     "company": "company"
   },
   {
     "id": "1",
-    "name": "Name",
-    "surname": "surname",
+    "first_name": "Name",
+    "last_name": "surname",
     "email": "email@o2.com",
     "active": "yes",
     "company": "company"
