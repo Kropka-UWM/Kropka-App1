@@ -34,9 +34,7 @@ SECRET_KEY = 'django-insecure-nyqa6gebz7n%hy$h*%^9^5zy9efk$&j9-)96%c185#(d82=h@4
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ALLOWED_ORIGINS = [
-    'vps-9ee2e9ea.vps.ovh.net'
-]
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = default_headers + ('cache-control',)
 
 # Application definition
