@@ -30,7 +30,6 @@ export const store = createStore<State>({
         "Authorization"
       ] = `Bearer ${userData.access_token}`;
       state.userToken = userData.access_token;
-      console.log(userData);
     },
     CLEAR_USER_DATA() {
       localStorage.removeItem("user");
