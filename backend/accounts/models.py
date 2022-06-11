@@ -23,7 +23,7 @@ class Company(models.Model):
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
     def __str__(self):  # noqa: D105
-        return self.name
+        return f'{self.name}'
 
     class Meta:  # noqa: D106
         verbose_name = _('Company')
@@ -51,7 +51,7 @@ class StudentTeam(models.Model):
     created_dt = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
     def __str__(self):  # noqa: D105
-        return self.name
+        return f'{self.name}'
 
     class Meta:  # noqa: D106
         verbose_name = _('Students team')
@@ -121,6 +121,12 @@ class CustomUser(AbstractUser):
         if self.account_type:
             return f'[{self.get_account_type_display()}] {get_name}'
         return get_name
+
+    def get_average(self):
+        """Return minimal passable average if it's not filled."""
+        if self.average:
+            return f'{self.average}'
+        return f'{3.0}'  # Default value
 
     def clean(self):  # noqa: D102:
         if self.team and self.account_type == CustomUser.STUDENT_LEADER:

@@ -6,6 +6,7 @@ import GroupUsers from "../views/userpanel/GroupUsers.vue"
 import UserPanel from "../views/userpanel/UserPanel.vue"
 import CompanyPanel from "../views/userpanel/CompanyPanel.vue"
 import WaitingPhase from "../views/userpanel/WaitingPhase.vue"
+import AdminPanel from "../views/userpanel/AdminPanel.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -47,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "UserPanel",
         component: UserPanel,
       },
-            {
+      {
         path: "CompanyPanel",
         name: "CompanyPanel",
         component: CompanyPanel,
@@ -56,6 +57,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "WaitingPhase",
         name: "WaitingPhase",
         component: WaitingPhase,
+      },
+      {
+        path: "AdminPanel",
+        name: "AdminPanel",
+        component: AdminPanel,
       },
     ],
     meta: {

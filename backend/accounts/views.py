@@ -5,6 +5,7 @@ import io
 from collections import OrderedDict
 
 # Django
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
 from django.db.models import Prefetch
@@ -25,6 +26,7 @@ from weasyprint import HTML
 # Local
 from .models import Company
 from .models import StudentTeam
+from .serializers import AssignStudentSerializer
 from .serializers import ClassicUserSerializer
 from .serializers import GroupedCompanySerializer
 from .serializers import JustEmailSerializer
@@ -64,10 +66,35 @@ class GroupStudentsView(ListAPIView):
     def list(self, request, *args, **kwargs):  # noqa: D102
         response = super().list(request, *args, **kwargs)
         unsetted_qs = UserModel.objects.filter(company=None)
-        get_data = response.data[0]
+        get_data = OrderedDict()
+        for response_dict in response.data:
+            if list(response_dict.items())[0][1]:
+                get_data.update(response_dict)
         get_data['unsetted'] = ClassicUserSerializer(
             unsetted_qs, many=True).data
         return Response(get_data)
+
+
+class AssignStudentView(APIView):
+    """Assign student view."""
+
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AssignStudentSerializer
+
+    def post(self, request, format=None):  # noqa: D102
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            student = data['student']
+            student.company = data['company']
+            student.save()
+            serialized_user = UserSerializer(
+                UserModel.objects.filter(id=student.id), many=True)
+            return Response(serialized_user.data[0])
+        return Response(
+            serializer.errors,
+            status=HTTP_400_BAD_REQUEST,
+        )
 
 
 class ListStudentsView(ListAPIView):
@@ -79,6 +106,8 @@ class ListStudentsView(ListAPIView):
 
     def get_queryset(self):  # noqa: D102
         qs = super().get_queryset()
+        if self.request.user.is_superuser:
+            return qs
         if not self.request.user.team:
             raise Http404
         return qs.filter(team=self.request.user.team)
@@ -123,7 +152,11 @@ class PDFSummaryView(APIView):
             string=template,
             base_url=self.request.build_absolute_uri(),
         )
-        file_buffer = io.BytesIO(html.write_pdf())
+        file_buffer = io.BytesIO(html.write_pdf(
+            stylesheets=[
+                f'{settings.BASE_DIR}/static/css/bootstrap.min.css',
+            ],
+        ))
         return file_buffer
 
     def post(self, request, format=None):  # noqa: D102

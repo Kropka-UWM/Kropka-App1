@@ -17,6 +17,9 @@ from pathlib import Path
 # Django
 from django.utils.translation import gettext_lazy as _
 
+# 3rd-party
+from corsheaders.defaults import default_headers
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,6 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = default_headers + ('cache-control',)
 
 # Application definition
 
@@ -42,6 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'channels',
     'backend.settings.apps.SettingsConfig',
     'backend.handlers.apps.HandlersConfig',
@@ -53,9 +61,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'dj_rest_auth.registration',
     'push_notifications',
     'import_export',
 ]
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'backend.accounts.serializers.UserSerializer',
+}
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'backend.settings.context_processors.settings_processor',
             ],
         },
     },
@@ -201,14 +217,24 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ),
 }
+
+REST_USE_JWT = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'apps_static/')
@@ -238,8 +264,17 @@ PUSH_NOTIFICATIONS_SETTINGS = {
     'GCM_API_KEY': '',
 }
 
+LOGIN_REDIRECT_URL = '/'
+
 try:
     # Project
     from backend.project.settings_local import *  # noqa: F403, F401
+except ImportError:
+    pass
+
+# Needs to be after
+try:
+    # Project
+    from backend.project.settings_sentry import *  # noqa: F403, F401
 except ImportError:
     pass

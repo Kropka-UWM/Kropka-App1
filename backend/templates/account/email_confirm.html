@@ -1,0 +1,6 @@
+{% load i18n %}
+{% if confirm %}
+Something is wrong, only god knows why.
+{% else %}
+<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+{% endif %}
