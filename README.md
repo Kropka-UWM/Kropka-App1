@@ -60,6 +60,7 @@ npm run serve
   * /group_students/
   * /list_students/
   * /list_companies/
+  * /assign_student/
   * /get_conversations/
   * /get_messages/
   * /get_messages/<conversation_id>/

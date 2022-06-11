@@ -6,8 +6,8 @@ import { computed } from "vue";
 
 const incomingHeaders: Array<string> = [
   "id",
-  "name",
-  "surname",
+  "first_name",
+  "last_name",
   "email",
   "company",
 ];
@@ -15,22 +15,22 @@ const incomingHeaders: Array<string> = [
 const IncomingData: Student[] = [
   {
     id: "1",
-    name: "Name",
-    surname: "surname",
+    first_name: "Name",
+    last_name: "surname",
     email: "email@o2.com",
     company: "company",
   },
   {
     id: "1",
-    name: "Name",
-    surname: "surname",
+    first_name: "Name",
+    last_name: "surname",
     email: "email@o2.com",
     company: "company",
   },
   {
     id: "1",
-    name: "Name",
-    surname: "surname",
+    first_name: "Name",
+    last_name: "surname",
     email: "email@o2.com",
     company: "company",
   },

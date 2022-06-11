@@ -63,6 +63,16 @@ function changeMode() {
         >
       </li>
       <li>
+        <router-link class="navbar-brand" to="/panel/adminpanel">
+          <svg class="bi me-2" width="16" height="16">
+            <use
+              xlink:href="@/assets/icons/bootstrap-icons.svg#speedometer2"
+            ></use>
+          </svg>
+          Admin panel</router-link
+        >
+      </li>
+      <li>
         <router-link class="navbar-brand" to="/panel/waitingphase">
           <svg class="bi me-2" width="16" height="16">
             <use

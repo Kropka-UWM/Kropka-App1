@@ -1,5 +1,10 @@
 import axios from "axios";
 
+import { key } from "@/store";
+import { useStore } from "vuex";
+
+const store = useStore(key);
+
 export interface IUser {
   id?: number;
   email: string;
@@ -19,9 +24,15 @@ export interface RequestInterface {
 export abstract class UsersApi {
   private static usersAxios = axios.create();
 
-  static async getAllUsers(): Promise<IUser[]> {
-    const url = "https://reqres.in/api/users";
-    const response = await this.usersAxios.get<RequestInterface>(url);
+  static async getAllUsers(token: string): Promise<IUser[]> {
+
+
+    const url = "http://vps-9ee2e9ea.vps.ovh.net:8000/list_students/";
+    const response = await this.usersAxios.get<RequestInterface>(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data.data;
   }
 }

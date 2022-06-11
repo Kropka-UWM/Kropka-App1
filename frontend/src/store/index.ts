@@ -9,6 +9,7 @@ export interface State {
   user: User;
   darkMode: boolean;
   toasts: Notification[];
+  userToken: string;
 }
 
 // define injection key
@@ -19,6 +20,7 @@ export const store = createStore<State>({
     user: {} as User,
     darkMode: false,
     toasts: [],
+    userToken: "",
   },
   mutations: {
     SET_USER_DATA(state, userData) {
@@ -26,7 +28,9 @@ export const store = createStore<State>({
       localStorage.setItem("user", JSON.stringify(userData));
       axios.defaults.headers.common[
         "Authorization"
-      ] = `Bearer ${userData.token}`;
+      ] = `Bearer ${userData.access_token}`;
+      state.userToken = userData.access_token;
+      console.log(userData);
     },
     CLEAR_USER_DATA() {
       localStorage.removeItem("user");
@@ -41,12 +45,17 @@ export const store = createStore<State>({
   },
   actions: {
     async register({ commit }, credentials) {
-      const { data } = await axios.post("http://localhost:8000/register/", credentials);
+      const { data } = await axios.post(
+        "http://vps-9ee2e9ea.vps.ovh.net:8000/register/",
+        credentials
+      );
       commit("SET_USER_DATA", data);
     },
     async login({ commit }, credentials) {
-      console.log(credentials)
-      const { data } = await axios.post("http://localhost:8000/login/", credentials);
+      const { data } = await axios.post(
+        "http://vps-9ee2e9ea.vps.ovh.net:8000/login/",
+        credentials
+      );
       commit("SET_USER_DATA", data);
     },
     logout({ commit }) {

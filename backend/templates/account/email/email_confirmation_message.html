@@ -1,0 +1,26 @@
+{% extends 'email_base.html' %}
+{% load i18n %}
+
+{% block content %}
+<tr>
+  <td
+    align="left"
+    style="
+      width: 100%;
+      color: #000000;
+      font-family: 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
+      font-size: 17px;
+      line-height: 20px;
+      text-align: justify;
+      font-weight: bold;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    "
+  >
+      {% blocktrans %}
+        Email address has been confirmed.
+      {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}
