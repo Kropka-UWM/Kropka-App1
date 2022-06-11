@@ -40,7 +40,7 @@ function register() {
         toastClass: "bg-success",
         textClass: "text-white",
       });
-      router.push({ name: "panel" });
+      router.push({ name: "login" });
     })
     .catch((err) => {
       store.commit("ADD_TOAST", {
