@@ -110,10 +110,9 @@ onMounted(async () => {
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-duppaaaaa
 
 {{store.state.userToken}}
-koniecdupyyyyy
+
 
       {{users}}
         <h1 class="text-start">Company</h1>
