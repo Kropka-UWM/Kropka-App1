@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 09:54+0200\n"
-"PO-Revision-Date: 2022-05-26 09:56+0124\n"
-"Last-Translator:   <pszczepanski@gmail.com>\n"
+"POT-Creation-Date: 2022-06-10 23:44+0200\n"
+"PO-Revision-Date: 2022-06-10 23:45+0124\n"
+"Last-Translator:   <patryk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,207 +19,345 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: backend/accounts/models.py:15 backend/accounts/resources.py:43
+#: .\backend\accounts\models.py:15 .\backend\accounts\resources.py:43
 msgid "Name of company"
 msgstr "Nazwa firmy"
 
-#: backend/accounts/models.py:20
+#: .\backend\accounts\models.py:20
 msgid "Logo of company"
 msgstr "Logo firmy"
 
-#: backend/accounts/models.py:23 backend/accounts/models.py:51
-#: backend/chat/models.py:17 backend/chat/models.py:43
+#: .\backend\accounts\models.py:23 .\backend\accounts\models.py:51
+#: .\backend\chat\models.py:17 .\backend\chat\models.py:43
 msgid "Creation time"
 msgstr "Czas utworzenia"
 
-#: backend/accounts/models.py:29 backend/accounts/models.py:70
-#: backend/accounts/models.py:99
+#: .\backend\accounts\models.py:29 .\backend\accounts\models.py:70
+#: .\backend\accounts\models.py:99
 msgid "Company"
 msgstr "Firma"
 
-#: backend/accounts/models.py:30
+#: .\backend\accounts\models.py:30
 msgid "Companies"
 msgstr "Firmy"
 
-#: backend/accounts/models.py:39
+#: .\backend\accounts\models.py:39
 msgid "Company that team belongs to"
 msgstr "Firma do której zespół należy"
 
-#: backend/accounts/models.py:43 backend/accounts/resources.py:20
+#: .\backend\accounts\models.py:43 .\backend\accounts\resources.py:20
 msgid "Name of team"
 msgstr "Nazwa zespołu"
 
-#: backend/accounts/models.py:48
+#: .\backend\accounts\models.py:48
 msgid "Logo of student team"
 msgstr "Logo zespołu studentów"
 
-#: backend/accounts/models.py:57
+#: .\backend\accounts\models.py:57
 msgid "Students team"
 msgstr "Zespół studentów"
 
-#: backend/accounts/models.py:58
+#: .\backend\accounts\models.py:58
 msgid "Students teams"
 msgstr "Zespoły studentów"
 
-#: backend/accounts/models.py:71
+#: .\backend\accounts\models.py:71
 msgid "Leader"
 msgstr "Przewodniczący"
 
-#: backend/accounts/models.py:72
+#: .\backend\accounts\models.py:72
 msgid "Student leader"
 msgstr "Szef zespołu"
 
-#: backend/accounts/models.py:73
+#: .\backend\accounts\models.py:73
 msgid "Student"
 msgstr "Student"
 
-#: backend/accounts/models.py:77 backend/accounts/resources.py:74
+#: .\backend\accounts\models.py:77 .\backend\accounts\resources.py:74
 msgid "Email address"
 msgstr "Adres email"
 
-#: backend/accounts/models.py:80
+#: .\backend\accounts\models.py:80
 msgid "A user with that email already exists."
 msgstr "Użytkownik z podanym adresem email już istnieje!"
 
-#: backend/accounts/models.py:83 backend/accounts/resources.py:82
+#: .\backend\accounts\models.py:83 .\backend\accounts\resources.py:82
 msgid "Account type"
 msgstr "Typ konta"
 
-#: backend/accounts/models.py:92
+#: .\backend\accounts\models.py:92
 msgid "Team assigned to student"
 msgstr "Zespół przypisany do studenta"
 
-#: backend/accounts/models.py:101
+#: .\backend\accounts\models.py:101
 msgid "Index student number"
 msgstr "Numer indeksu studenta"
 
-#: backend/accounts/models.py:103
+#: .\backend\accounts\models.py:103
 msgid "Students amount for project"
 msgstr "Liczba studentów dla projektu"
 
-#: backend/accounts/models.py:111
+#: .\backend\accounts\models.py:111
 msgid "Registration notes"
 msgstr "Uwagi odnośnie rejestracji"
 
-#: backend/accounts/models.py:113
+#: .\backend\accounts\models.py:113
 msgid "Average from studies grades"
 msgstr "Średnia z ocen ze studiów"
 
-#: backend/accounts/models.py:130
+#: .\backend\accounts\models.py:136
 msgid "No more than one leader can exist in the team!"
 msgstr "Nie może istnieć więcej niż jeden szef zespołu studentów!"
 
-#: backend/accounts/resources.py:24 backend/accounts/resources.py:47
-#| msgid "Creation time"
+#: .\backend\accounts\resources.py:24 .\backend\accounts\resources.py:47
 msgid "Created at"
 msgstr "Czas utworzenia"
 
-#: backend/accounts/resources.py:66
+#: .\backend\accounts\resources.py:66
 msgid "First name"
 msgstr "Imię"
 
-#: backend/accounts/resources.py:70
+#: .\backend\accounts\resources.py:70
 msgid "Last name"
 msgstr "Nazwisko"
 
-#: backend/accounts/resources.py:78
+#: .\backend\accounts\resources.py:78
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: backend/accounts/resources.py:86
-#| msgid "Index student number"
+#: .\backend\accounts\resources.py:86
 msgid "Index number"
 msgstr "Numer indeksu"
 
-#: backend/chat/models.py:14
+#: .\backend\chat\models.py:14
 msgid "Name of conversation"
 msgstr "Nazwa konwersacji"
 
-#: backend/chat/models.py:23
+#: .\backend\chat\models.py:23
 msgid "Conversation"
 msgstr "Konwersacja"
 
-#: backend/chat/models.py:24
+#: .\backend\chat\models.py:24
 msgid "Conversations"
 msgstr "Konwersacje"
 
-#: backend/chat/models.py:40
+#: .\backend\chat\models.py:40
 msgid "Content of message"
 msgstr "Treść wiadomości"
 
-#: backend/chat/models.py:44
+#: .\backend\chat\models.py:44
 msgid "Update time"
 msgstr "Czas aktualizacji"
 
-#: backend/chat/models.py:47
+#: .\backend\chat\models.py:47
 #, python-brace-format
 msgid "Message {0} from user {1}"
 msgstr "Wiadomość {0} od użytkownika {1}"
 
-#: backend/chat/models.py:50
+#: .\backend\chat\models.py:50
 msgid "Message"
 msgstr "Wiadomość"
 
-#: backend/chat/models.py:51
+#: .\backend\chat\models.py:51
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: backend/project/settings.py:172
+#: .\backend\project\settings.py:184
 msgid "Polish"
 msgstr "Polski"
 
-#: backend/project/settings.py:173
+#: .\backend\project\settings.py:185
 msgid "English"
 msgstr "Angielski"
 
-#: backend/project/settings.py:181
+#: .\backend\project\settings.py:193
 msgid "Polski"
 msgstr "Polski"
 
-#: backend/settings/mixins.py:15
+#: .\backend\settings\mixins.py:15
 #, python-brace-format
 msgid "Only one object of {0} can be created"
 msgstr "Tylko jeden obiekt typu {0} może być utworzony!"
 
-#: backend/settings/models.py:14
-#| msgid "Name of team"
+#: .\backend\settings\models.py:14
 msgid "Name of project"
 msgstr "Nazwa projektu"
 
-#: backend/settings/models.py:15
-#| msgid "Logo of company"
+#: .\backend\settings\models.py:15
 msgid "Logo of project"
 msgstr "Logo projektu"
 
-#: backend/settings/models.py:17
+#: .\backend\settings\models.py:17
+msgid "Email address for contact"
+msgstr "Adres email do kontaktu"
+
+#: .\backend\settings\models.py:24
 msgid "Phone number for contact"
 msgstr "Numer telefonu do kontaktu"
 
-#: backend/settings/models.py:23
-#| msgid "Registration notes"
+#: .\backend\settings\models.py:31
 msgid "Registration end time"
 msgstr "Termin końcowy rejestracji"
 
-#: backend/settings/models.py:34
+#: .\backend\settings\models.py:42
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: backend/templates/emails/summary.html:4 backend/templates/summary.html:4
+#: .\backend\templates\account\email\email_confirmation_message.html:21
+msgid ""
+"\n"
+"        Email address has been confirmed.\n"
+"      "
+msgstr ""
+"\n"
+"Adres email został potwierdzony."
+
+#: .\backend\templates\account\email\email_confirmation_message.txt:1
+#: .\backend\templates\account\email\password_reset_key_message.txt:1
+#, python-format
+msgid "Hello from %(site_name)s!"
+msgstr "Witaj z %(site_name)s!"
+
+#: .\backend\templates\account\email\email_confirmation_message.txt:3
+#, python-format
+msgid ""
+"\n"
+"You're receiving this e-mail because probably you gave yours e-mail address to connect your account.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+"\n"
+"Dostajesz ten e-mail ponieważ prawdopodobnie ty podałeś swój adres mailowy by połączyć go ze swoim kontem.\n"
+"\n"
+"Aby potwierdzić, przejdź do %(activate_url)s\n"
+
+#: .\backend\templates\account\email\email_confirmation_message.txt:8
+#, python-format
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Dziękujemy - zespół %(site_name)s!\n"
+"%(site_domain)s"
+
+#: .\backend\templates\account\email\email_confirmation_signup_message.html:21
+#, python-format
+msgid ""
+"\n"
+"        You're receiving this e-mail because probably you gave yours e-mail address to connect your account.\n"
+"\n"
+"        To confirm this is correct, go to %(activate_url)s\n"
+"      "
+msgstr ""
+"\n"
+"Dostajesz ten e-mail ponieważ prawdopodobnie ty podałeś swój adres mailowy by połączyć go ze swoim kontem.\n"
+"\n"
+"Aby potwierdzić, przejdź do %(activate_url)s"
+
+#: .\backend\templates\account\email\email_confirmation_signup_subject.txt:3
+msgid "Please confirm your email address"
+msgstr "Potwierdź swój adres email"
+
+#: .\backend\templates\account\email\password_reset_key_message.html:21
+msgid ""
+"\n"
+"        You're receiving this e-mail because you or someone else has requested a\n"
+"        password for your user account.\n"
+"        It can be safely ignored if you did not request a password reset. Click the\n"
+"        link below to reset your password.\n"
+"      "
+msgstr ""
+"\n"
+"Dostajesz tą wiadomość e-mail ponieważ ty lub ktoś inny wysłał prośbę o reset hasła twojego konta.\n"
+"Możesz zignorować tą wiadomość jeżeli to nie jest Twoja prośba. Kliknij w link aby zresetować hasło."
+
+#: .\backend\templates\account\email\password_reset_key_message.html:29
+msgid "Reset Password"
+msgstr "Resetowanie Hasła"
+
+#: .\backend\templates\account\email\password_reset_key_message.html:31
+msgid "In case you forgot, your username is"
+msgstr "W przypadku gdybyś zapomniał, twoja nazwa użytkownika to"
+
+#: .\backend\templates\account\email\password_reset_key_message.txt:3
+msgid ""
+"\n"
+"You're receiving this e-mail because you or someone else has requested a password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the link below to reset your password."
+msgstr ""
+"\n"
+"Dostajesz tą wiadomość e-mail ponieważ ty lub ktoś inny wysłał prośbę o reset hasła twojego konta.\n"
+"Możesz zignorować tą wiadomość jeżeli to nie jest Twoja prośba. Kliknij w link aby zresetować hasło."
+
+#: .\backend\templates\account\email\password_reset_key_message.txt:9
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr "W przypadku gdybyś zapomniał, twoja nazwa użytkownika to %(username)s"
+
+#: .\backend\templates\account\email\password_reset_key_message.txt:11
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Dziękujemy za korzystanie z %(site_name)s!\n"
+"%(site_domain)s"
+
+#: .\backend\templates\account\email\password_reset_key_subject.txt:3
+msgid "Password reset email"
+msgstr "Resetowanie hasła"
+
+#: .\backend\templates\account\email_confirm.html:5
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"Link potwierdzający do adresu email wygasł lub jest nieprawidłowy. Proszę, kliknij w ten link aby wysłać nową prośbę o potwierdzenie konta:\n"
+"<a href=\"%(email_url)s\">Klik</a>"
+
+#: .\backend\templates\account\verify_sent.html:2
+msgid ""
+"\n"
+"Verification email has been sent.\n"
+msgstr ""
+"\n"
+"Email potwierdzający został wysłany.\n"
+
+#: .\backend\templates\emails\summary.html:4
+#: .\backend\templates\summary.html:4
 msgid "PDF Template"
 msgstr "Szablon PDF"
 
-#: backend/templates/errors/404.html:4
+#: .\backend\templates\errors\404.html:4
 msgid "Error 404"
 msgstr "Błąd 404"
 
-#: backend/templates/errors/404.html:19
+#: .\backend\templates\errors\404.html:19
 msgid "Error 404 - contact the administration."
 msgstr "Błąd 404 - skontaktuj się z administracją."
 
-#: backend/templates/errors/500.html:4
+#: .\backend\templates\errors\500.html:4
 msgid "Error 500"
 msgstr "Błąd 500"
 
-#: backend/templates/errors/500.html:19
+#: .\backend\templates\errors\500.html:19
 msgid "Error 500 - contact the administration."
 msgstr "Błąd 500 - skontaktuj się z administracją."
+
+#: .\backend\templates\summary.html:21
+msgid "Generated by"
+msgstr "Wygenerowane przez"
+
+#: .\backend\templates\summary.html:22
+#| msgid "University of magic and illusion"
+msgid "Department of magic and illusion"
+msgstr "Wydział magii i iluzji"
+
+#: .\backend\templates\summary.html:26
+msgid "Summary raport of students"
+msgstr "Raport podsumowujący studentów"
+
+#: .\backend\templates\summary.html:41
+msgid "Average"
+msgstr "Średnia"
