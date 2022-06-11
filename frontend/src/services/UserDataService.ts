@@ -32,6 +32,7 @@ export abstract class UsersApi {
       headers: {
         Authorization: `Token ${token}`,
       },
+      withCredentials: true,
     });
     return response.data.data;
   }
