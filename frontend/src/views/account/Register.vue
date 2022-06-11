@@ -37,7 +37,6 @@ function register() {
         toastClass: "bg-success",
         textClass: "text-white",
       });
-      console.log("xD");
       router.push({ name: "login" });
     })
     .catch((err) => {
