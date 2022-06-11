@@ -220,15 +220,15 @@ REST_FRAMEWORK = {
     ),
 }
 
-REST_USE_JWT = True
+# REST_USE_JWT = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+# ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
-    'ROTATE_REFRESH_TOKENS': True,
-}
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(days=60),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
+#     'ROTATE_REFRESH_TOKENS': True,
+# }
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
