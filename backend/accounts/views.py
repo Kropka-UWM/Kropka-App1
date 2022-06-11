@@ -48,8 +48,7 @@ class CreateUserView(CreateAPIView):
 class GetAccountInfo(RetrieveAPIView):
     """Student base info class."""
 
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
     queryset = UserModel.objects.all()
 
@@ -60,8 +59,7 @@ class GetAccountInfo(RetrieveAPIView):
 class GroupStudentsView(ListAPIView):
     """Group students view."""
 
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = GroupedCompanySerializer
     queryset = Company.objects.prefetch_related('customuser_set')
 
@@ -80,8 +78,7 @@ class GroupStudentsView(ListAPIView):
 class AssignStudentView(APIView):
     """Assign student view."""
 
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = AssignStudentSerializer
 
     def post(self, request, format=None):  # noqa: D102
@@ -103,8 +100,7 @@ class AssignStudentView(APIView):
 class ListStudentsView(ListAPIView):
     """Retrieve students view."""
 
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = ClassicUserSerializer
     queryset = UserModel.objects.all()
 
@@ -120,8 +116,7 @@ class ListStudentsView(ListAPIView):
 class ListCompanyView(ListAPIView):
     """List company view."""
 
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = StudentTeamSerializer
     queryset = StudentTeam.objects.prefetch_related('customuser_set')
 
@@ -142,8 +137,7 @@ class ListCompanyView(ListAPIView):
 class PDFSummaryView(APIView):
     """Just PDF view."""
 
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = JustEmailSerializer
 
     def gen_summary_pdf(self):  # noqa: D102
