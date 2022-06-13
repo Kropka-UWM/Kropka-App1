@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 # Standard Library
 import os
-from datetime import timedelta
 from pathlib import Path
 
 # Django
