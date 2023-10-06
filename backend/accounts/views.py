@@ -173,7 +173,7 @@ class PDFSummaryView(APIView):
                     {}, 'emails/summary.html', attachments)
             return FileResponse(
                 ContentFile(file.getvalue(), fname),
-                as_attachment=True, content_type='applicatiopn/pdf',
+                as_attachment=True, content_type='application/pdf',
             )
         return Response(
             serializer.errors,
