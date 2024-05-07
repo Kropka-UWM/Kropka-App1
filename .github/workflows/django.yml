@@ -11,7 +11,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: ['3.10']
+        python-version: ['3.11', '3.12']
 
     steps:
     - uses: actions/checkout@v3
@@ -22,8 +22,6 @@ jobs:
     - name: Install Dependencies
       run: |
         pip --disable-pip-version-check install --no-compile -r requirements_dev.txt
-        pip install hyperframe==6.0.1
-        pip install h2==4.1.0
     - name: Run Flake8
       run: |
         flake8 .
