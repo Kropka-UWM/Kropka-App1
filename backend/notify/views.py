@@ -45,6 +45,6 @@ def register_push(request):  # noqa: D103
             return JsonResponse({'is_finished': True})
         else:
             qs.send_message('test')
-    except BaseException as e:
+    except BaseException as e:  # noqa: B902
         print(f'Register push error: {e}')
     raise Http404
