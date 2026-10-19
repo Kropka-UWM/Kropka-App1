@@ -24,7 +24,7 @@ class CompanyAdmin(ExportMixin, admin.ModelAdmin):
     search_fields = [
         'name',
     ]
-    resource_class = CompanyResource
+    resource_classes = [CompanyResource]
 
 
 @admin.register(StudentTeam)
@@ -38,7 +38,7 @@ class StudentTeamAdmin(ExportMixin, admin.ModelAdmin):
     search_fields = [
         'name',
     ]
-    resource_class = StudentTeamResource
+    resource_classes = [StudentTeamResource]
 
 
 @admin.register(CustomUser)
@@ -59,4 +59,4 @@ class CustomUserAdmin(ExportMixin, admin.ModelAdmin):
     list_filter = [
         'account_type',
     ]
-    resource_class = CustomUserResource
+    resource_classes = [CustomUserResource]

@@ -1,10 +1,8 @@
 // Custom types
 
-import { string } from "yup";
-
 export type ErrorMessage = string | null;
 
-type UserType = "Admin" | "Student" | "Student leader" | "Company" | null;
+type UserType = "leader" | "student" | "student_leader" | "company" | null;
 
 export interface User {
   name: string | null;
@@ -23,14 +21,14 @@ export interface LoginData {
 
 export interface Student {
   id: string;
-  name: string;
-  surname: string;
+  first_name: string;
+  last_name: string;
   email: string;
   company: string;
 }
 
 export interface ResponseData {
-  data: any;
+  data: unknown;
 }
 
 export interface Notification {

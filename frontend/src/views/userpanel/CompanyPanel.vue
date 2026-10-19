@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Table from "@/components/Table.vue";
-import { Student, ResponseData } from "../../types";
 import { computed } from "vue";
 
 const incomingHeaders: Array<string> = [

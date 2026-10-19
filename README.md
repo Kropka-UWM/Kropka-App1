@@ -14,12 +14,28 @@
 * Przemysław Samsel
 
 # Czego wymaga backend?
-Backend powinien być obsługiwany od pythona 3.6 w górę (zalecana najbardziej wersja prze ze mnie to 3.8)
+Backend używa Django 6.1.2. Zalecany Python to 3.15 (zapisany w `.python-version`).
+GitHub Actions sprawdza Python 3.12, 3.13, 3.14 i 3.15.
 
-Dodatkowo wymaga obsługę ASGI do funkcjonalności chatu.
+Chat obsługuje Channels 4 z serwerem ASGI Daphne. Do komunikacji między procesami potrzebny
+jest Redis dostępny domyślnie pod `127.0.0.1:6379`.
+
+Generowanie PDF przez WeasyPrint wymaga bibliotek systemowych Pango. Na Ubuntu:
+
+```sh
+sudo apt-get install libpango-1.0-0 libpangoft2-1.0-0
+```
+
+Na macOS z Homebrew: `brew install pango`. Jeżeli biblioteki nie są wykrywane automatycznie,
+ustaw `DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib"`.
 
 # Czego wymaga frontend?
-Wystarczy zainstalować aktualną, stabilną wersje node.js - na tą chwile 16.15.1
+Node.js 24.15 lub nowszy z linii 24 LTS albo Node.js 26. Frontend używa Vue 3.5,
+Vite 8, Vitest 5 i ESLint 10. Obie linie Node.js są sprawdzane w CI.
+
+TypeScript pozostaje w najnowszej zgodnej linii 6.0 (6.0.3), ponieważ `typescript-eslint`
+nie obsługuje jeszcze TypeScript 7. `vuedraggable` używa linii 4 dla Vue 3;
+pakiet oznaczony w npm jako `latest` z linii 2 jest przeznaczony dla Vue 2.
 
 # Jak stworzyć konto superuser, czyli administratora w django?
 Konto superusera tworzymy za pomocą komendy `python manage.py createsuperuser`, 
@@ -27,21 +43,21 @@ a następnie wypełniamy informacje w interaktywnym kreatorze w konsoli/terminal
 
 Dodatkowo warto dodać, że panel administratora do całej bazy znajduje się pod adresem `<tu_domena>/admin/`
 
-# Fix pod python 3.10:
-```
-pip install hyperframe==6.0.1
-pip install h2==4.1.0
-```
-
 # Jak uruchomić projekt?
-Musimy najpierw utworzyć katalog logs w katalogu backend.
-Jeżeli chcemy uruchomić projekt, wystarczy iż z poziomu głównego katalogu odpalimy komendę:
-```
+Utwórz środowisko i zainstaluj zależności z poziomu głównego katalogu:
+
+```sh
+python3.15 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements_dev.txt
+mkdir -p backend/logs
 python manage.py migrate
 python manage.py runserver
 ```
 
-Domyślnie jest tworzona baza danych "plikowa" (sqlite3) ale możemy skopiować settings_local.example jako settings_local.py -
+Domyślnie jest tworzona baza SQLite. Możemy skopiować `backend/project/settings_local.example`
+jako `backend/project/settings_local.py` -
 a następnie zmodyfikować jego zawartość tak aby ten plik zawierał konfigurację np. do połączenia z MySQL albo PostgreSQL.
 
 Same nazwy backendów które trzeba umieścić są opisane w dokumentacji na stronie django.
@@ -50,9 +66,28 @@ Uruchomienie frontu:
 
 ```
 cd frontend
-npm install
+npm ci
 npm run serve
 ```
+
+Frontend jest dostępny pod `http://localhost:8080`.
+
+Sprawdzenie projektu przed wysłaniem zmian (backend nie wymaga Redisa w testach):
+
+```sh
+python -m pip check
+flake8 .
+python manage.py check
+python manage.py makemigrations --check --dry-run
+python manage.py test
+cd frontend
+npm run lint
+npm run test:unit
+npm run build
+```
+
+Po aktualizacji uruchom `python manage.py migrate`, aby zastosować również migracje dodatków
+allauth i push-notifications. Przed migracją istniejącej instalacji wykonaj kopię bazy danych.
 
 # Endpointy [backend]:
 * **Autentykacja**:

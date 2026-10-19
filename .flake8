@@ -1,5 +1,6 @@
 [flake8]
 max-line-length = 99
+extend-exclude = .venv,venv,.idea
 exclude =   migrations,
             settings_local_pipelines.py,
             celery_local.py,

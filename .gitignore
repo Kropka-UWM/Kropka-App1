@@ -5,3 +5,7 @@ debug.log
 info.log
 *node_modules/*
 *emails/*
+.venv/
+.coverage
+htmlcov/
+.pytest_cache/
