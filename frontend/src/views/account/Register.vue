@@ -14,11 +14,11 @@ let error = ref<ErrorMessage>(null);
 
 const user: User = reactive({
   name: "First name",
-  last_name: "Last name",
+  lastName: "Last name",
   userName: "username",
   email: "Email",
   password: "Password",
-  userType: "Student",
+  userType: "student",
 });
 
 const password2 = ref("");
@@ -56,29 +56,29 @@ function register() {
   <div class="register">
     <form @submit.prevent="register">
       <label for="userName"> Username: </label>
-      <input v-model="user.userName" type="text" name="userName" value />
+      <input v-model="user.userName" type="text" name="userName" />
 
       <label for="name"> First Name: </label>
-      <input v-model="user.name" type="text" name="name" value />
+      <input v-model="user.name" type="text" name="name" />
 
       <label for="lastName"> last Name: </label>
-      <input v-model="user.lastName" type="text" name="name" value />
+      <input v-model="user.lastName" type="text" name="name" />
 
       <label for="email"> Email: </label>
-      <input v-model="user.email" type="email" name="email" value />
+      <input v-model="user.email" type="email" name="email" />
 
       <label for="password"> Password: </label>
-      <input v-model="user.password" type="password" name="password" value />
+      <input v-model="user.password" type="password" name="password" />
       {{password2}}
       <label for="password2"> Password2: </label>
-      <input v-model="password2" type="password" name="password2" value />
+      <input v-model="password2" type="password" name="password2" />
 
       <label for="userType">User type:</label>
 
       <select v-model="user.userType" name="userType" id="userType">
         <option value="company">Company</option>
         <option value="leader">Leader</option>
-        <option value="student leader">Student leader</option>
+        <option value="student_leader">Student leader</option>
         <option value="student">Student</option>
       </select>
 

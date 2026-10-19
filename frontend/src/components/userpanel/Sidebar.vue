@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { key } from "@/store";
 import { useStore } from "vuex";
 
@@ -26,7 +25,7 @@ function changeMode() {
       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
     >
       <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="/@/assets/icons/bootstrap-icons.svg#bootstrap"></use>
+        <use xlink:href="@/assets/icons/bootstrap-icons.svg#bootstrap"></use>
       </svg>
       <span class="fs-4">Sidebar</span>
     </a>

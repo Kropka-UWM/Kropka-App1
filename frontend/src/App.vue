@@ -3,7 +3,6 @@ import { onMounted } from "vue";
 import axios from "axios";
 import { key } from "@/store";
 import { useStore } from "vuex";
-import ToastMangaer from "./components/ToastMangaer.vue";
 import ToastManager from "./components/ToastManager.vue";
 
 const store = useStore(key);

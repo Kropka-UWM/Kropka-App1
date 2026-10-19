@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Table from "@/components/Table.vue";
-import { Student, ResponseData } from "../../types";
 import { computed, ref, onMounted } from "vue";
 import { UsersApi } from "@/services/UserDataService";
 import { IUser } from "@/services/UserDataService";

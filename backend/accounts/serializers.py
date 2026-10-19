@@ -26,6 +26,14 @@ class UserSerializer(serializers.ModelSerializer, RegisterSerializer):
     password2 = serializers.CharField(write_only=True)
     # company = serializers.SerializerMethodField()
 
+    def get_cleaned_data(self):
+        """Pass profile fields to the current allauth registration adapter."""
+        return {
+            **super().get_cleaned_data(),
+            'first_name': self.validated_data.get('first_name', ''),
+            'last_name': self.validated_data.get('last_name', ''),
+        }
+
     @staticmethod
     def modify_user(user, validated_data):  # noqa: D102
         user.account_type = validated_data['account_type']

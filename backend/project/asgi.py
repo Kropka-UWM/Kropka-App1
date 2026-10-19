@@ -15,7 +15,6 @@ from django.core.asgi import get_asgi_application
 
 # 3rd-party
 from channels.auth import AuthMiddlewareStack
-from channels.http import AsgiHandler
 from channels.routing import ProtocolTypeRouter
 from channels.routing import URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
@@ -27,7 +26,7 @@ django_asgi_app = get_asgi_application()
 from backend.chat import routing  # noqa: E402
 
 application = ProtocolTypeRouter({
-    'http': AsgiHandler(),
+    'http': django_asgi_app,
     'websocket': AllowedHostsOriginValidator(
         AuthMiddlewareStack(
             URLRouter(routing.websocket_urlpatterns),

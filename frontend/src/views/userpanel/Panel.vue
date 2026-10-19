@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import SideBar from "@/components/userpanel/Sidebar.vue";
 import Table from "@/components/Table.vue";
-import { onMounted, ref } from "vue";
-import { UsersApi } from "@/services/UserDataService";
-import { Student, ResponseData } from "@/types";
-import { IUser } from "@/services/UserDataService";
+import { Student } from "@/types";
 
 const incomingHeaders: Array<string> = [
   "id",

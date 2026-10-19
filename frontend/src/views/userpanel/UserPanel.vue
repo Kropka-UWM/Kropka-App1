@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import SideBar from "@/components/userpanel/Sidebar.vue";
 import Table from "@/components/Table.vue";
-import { Student, ResponseData } from "../../types";
+import { Student } from "../../types";
 import { computed } from "vue";
 
 const incomingHeaders: Array<string> = [

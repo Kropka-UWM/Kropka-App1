@@ -1,9 +1,5 @@
 import axios from "axios";
 
-import { key } from "@/store";
-import { useStore } from "vuex";
-
-const store = useStore(key);
 
 export interface IUser {
   id?: number;

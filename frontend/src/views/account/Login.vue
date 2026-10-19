@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import { LoginData, ErrorMessage } from "../../types";
+import { ref } from "vue";
+import { ErrorMessage } from "../../types";
 import "../../store/index";
 import { key } from "../../store";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { useForm, useField } from "vee-validate";
 import * as yup from "yup";
-import { SchemaOf } from "yup";
+import { ObjectSchema } from "yup";
 
 const store = useStore(key);
 
@@ -22,7 +22,7 @@ interface loginInterface {
 }
 
 // Define a validation schema
-const schema: SchemaOf<loginInterface> = yup.object().shape({
+const schema: ObjectSchema<loginInterface> = yup.object().shape({
   email: yup.string().required().email(),
   password: yup.string().required().min(8),
 });
